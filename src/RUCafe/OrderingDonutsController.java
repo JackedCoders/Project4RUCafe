@@ -4,5 +4,5 @@ package RUCafe;
  *
  * @author Manveer Singh, Prasidh Sriram
  */
-public class OrderingDonuts {
+public class OrderingDonutsController {
 }
