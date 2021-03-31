@@ -21,6 +21,18 @@
             <Image url="@DonutsPicMainMenu1.jpg" />
          </image>
       </ImageView>
-      <ChoiceBox layoutX="29.0" layoutY="133.0" prefWidth="150.0" />
+      <ChoiceBox layoutX="211.0" layoutY="75.0" prefWidth="150.0" />
+      <Button layoutX="380.0" layoutY="361.0" mnemonicParsing="false" text="Add to Order" />
+      <Label layoutX="125.0" layoutY="365.0" text="Sub-Total:" />
+      <TextField layoutX="187.0" layoutY="361.0" />
+      <Button layoutX="269.0" layoutY="249.0" mnemonicParsing="false" text="&lt;&lt;" />
+      <Button layoutX="269.0" layoutY="212.0" mnemonicParsing="false" text="&gt;&gt;" />
+      <ChoiceBox layoutX="211.0" layoutY="175.0" prefWidth="150.0" />
+      <ScrollPane layoutX="29.0" layoutY="131.0" prefHeight="175.0" prefWidth="168.0">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0" />
+        </content>
+      </ScrollPane>
+      <ListView layoutX="390.0" layoutY="123.0" prefHeight="192.0" prefWidth="190.0" />
    </children>
 </AnchorPane>

@@ -1,6 +1,7 @@
 package RUCafe;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
 
 /**
@@ -10,5 +11,5 @@ import javafx.scene.control.RadioButton;
 public class MainMenuController {
 
     @FXML
-    private RadioButton OrderDonutsButton, OrderCoffeeButton, ViewStoreOrdersButton, ViewYourOrderButton;
+    private Button OrderDonutsButton, OrderCoffeeButton, ViewStoreOrdersButton, ViewYourOrderButton;
 }
