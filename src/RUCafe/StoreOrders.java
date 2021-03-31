@@ -1,4 +1,9 @@
 package RUCafe;
 
-public class StoreOrders {
+/**
+ *
+ * @author Manveer Singh, Prasidh Sriram
+ */
+public class StoreOrders implements Customizable{
+
 }

@@ -4,6 +4,6 @@ package RUCafe;
  *
  * @author Manveer Singh, Prasidh Sriram
  */
-public class Order implements Customizable{
+public class Coffeee extends MenuItem implements Customizable {
 
 }
