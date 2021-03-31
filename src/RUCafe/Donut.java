@@ -1,5 +1,8 @@
 package RUCafe;
-
+/**
+ *
+ * @author Manveer Singh, Prasidh Sriram
+ */
 public class Donut extends MenuItem implements Customizable{
 
     public double itemPrice(){

@@ -1,5 +1,8 @@
 package RUCafe;
-
+/**
+ *
+ * @author Manveer Singh, Prasidh Sriram
+ */
 public class Order implements Customizable{
     @Override
     public boolean add(Object obj) {
