@@ -20,7 +20,7 @@
             <Font size="23.0" />
          </font>
       </Label>
-      <Button layoutX="313.0" layoutY="73.0" mnemonicParsing="false" prefHeight="110.0" prefWidth="246.0" text="Order Coffee">
+      <Button fx:id="OrderCoffeeButton" layoutX="313.0" layoutY="73.0" mnemonicParsing="false" prefHeight="110.0" prefWidth="246.0" text="Order Coffee">
          <graphic>
             <ImageView fitHeight="102.0" fitWidth="168.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -28,7 +28,7 @@
                </image>
             </ImageView>
          </graphic></Button>
-      <Button layoutX="344.0" layoutY="227.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="185.0" text="View Your Order">
+      <Button fx:id="ViewYourOrderButton" layoutX="344.0" layoutY="227.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="185.0" text="View Your Order">
          <graphic>
             <ImageView fitHeight="32.0" fitWidth="66.0" pickOnBounds="true" preserveRatio="true">
                <image>
