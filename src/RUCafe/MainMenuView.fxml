@@ -12,10 +12,14 @@
             <Font size="20.0" />
          </font>
       </Label>
-      <ImageView fitHeight="114.0" fitWidth="153.0" layoutX="60.0" layoutY="71.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fitHeight="114.0" fitWidth="153.0" layoutX="379.0" layoutY="71.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="102.0" fitWidth="168.0" layoutX="372.0" layoutY="77.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@CoffeePicMainMenu.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="139.0" fitWidth="153.0" layoutX="54.0" layoutY="77.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@DonutsPicMainMenu1.jpg" />
          </image>
       </ImageView>
    </children>
