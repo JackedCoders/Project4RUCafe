@@ -13,5 +13,5 @@ public class MainMenuController {
     @FXML
     private Button OrderDonutsButton, OrderCoffeeButton, ViewStoreOrdersButton, ViewYourOrderButton;
 
-    
+
 }
