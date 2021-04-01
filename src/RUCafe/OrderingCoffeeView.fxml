@@ -17,15 +17,15 @@
             <Image url="@CoffeePicMainMenu.jpg" />
          </image>
       </ImageView>
-      <CheckBox layoutX="188.0" layoutY="215.0" mnemonicParsing="false" text="Cream" />
-      <CheckBox layoutX="110.0" layoutY="215.0" mnemonicParsing="false" text="Milk" />
-      <CheckBox layoutX="187.0" layoutY="251.0" mnemonicParsing="false" text="Whipped Cream" />
-      <CheckBox layoutX="110.0" layoutY="251.0" mnemonicParsing="false" text="Syrup" />
-      <CheckBox layoutX="110.0" layoutY="290.0" mnemonicParsing="false" text="Caramel" />
-      <TextField layoutX="187.0" layoutY="321.0" />
+      <CheckBox fx:id="Cream" layoutX="188.0" layoutY="215.0" mnemonicParsing="false" text="Cream" />
+      <CheckBox fx:id="Milk" layoutX="110.0" layoutY="215.0" mnemonicParsing="false" text="Milk" />
+      <CheckBox fx:id="WhippedCream" layoutX="187.0" layoutY="251.0" mnemonicParsing="false" text="Whipped Cream" />
+      <CheckBox fx:id="Syrup" layoutX="110.0" layoutY="251.0" mnemonicParsing="false" text="Syrup" />
+      <CheckBox fx:id="Caramel" layoutX="110.0" layoutY="290.0" mnemonicParsing="false" text="Caramel" />
       <Label layoutX="129.0" layoutY="325.0" text="Cost:" />
-      <Button layoutX="371.0" layoutY="321.0" mnemonicParsing="false" text="Add To Order" />
-      <ComboBox layoutX="310.0" layoutY="211.0" prefWidth="150.0" />
-      <ComboBox layoutX="310.0" layoutY="247.0" prefWidth="150.0" />
+      <Button fx:id="addToOrder" layoutX="332.0" layoutY="323.0" mnemonicParsing="false" text="Add To Order" />
+      <ComboBox fx:id="coffeeOrderSize" layoutX="310.0" layoutY="211.0" prefWidth="150.0" />
+      <ComboBox fx:id="coffeeOrderQuantity" layoutX="310.0" layoutY="247.0" prefWidth="150.0" />
+      <TextArea fx:id="textArea" layoutX="175.0" layoutY="317.0" prefHeight="36.0" prefWidth="121.0" />
    </children>
 </AnchorPane>
