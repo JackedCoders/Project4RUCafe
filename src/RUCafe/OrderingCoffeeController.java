@@ -30,11 +30,4 @@ public class OrderingCoffeeController {
     @FXML
     private ComboBox coffeeOrderSize, coffeeOrderQuantity;
 
-
-    public void initialize(URL url, ResourceBundle resourceBundle){
-        ObservableList<String> orderSize = FXCollections.observableArrayList("Short", "Tall", "Grande", "Venti");
-        ObservableList<String> quantitySize = FXCollections.observableArrayList("1", "2", "3", "4", "5");
-        coffeeOrderSize.setItems(orderSize);
-        coffeeOrderQuantity.setItems(quantitySize);
-    }
 }

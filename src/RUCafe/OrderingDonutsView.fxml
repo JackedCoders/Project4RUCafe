@@ -21,14 +21,13 @@
             <Image url="@DonutsPicMainMenu1.jpg" />
          </image>
       </ImageView>
-      <ChoiceBox fx:id="typeDonutsChoiceBox" layoutX="211.0" layoutY="75.0" prefWidth="150.0" />
-      <Button layoutX="384.0" layoutY="335.0" mnemonicParsing="false" text="Add to Order" />
-      <Label layoutX="129.0" layoutY="339.0" text="Sub-Total:" />
-      <TextField layoutX="191.0" layoutY="335.0" />
-      <Button layoutX="269.0" layoutY="249.0" mnemonicParsing="false" text="&lt;&lt;" />
-      <Button layoutX="269.0" layoutY="212.0" mnemonicParsing="false" text="&gt;&gt;" />
-      <ChoiceBox layoutX="211.0" layoutY="175.0" prefWidth="150.0" />
-      <ListView layoutX="390.0" layoutY="123.0" prefHeight="192.0" prefWidth="190.0" />
-      <ListView layoutX="14.0" layoutY="123.0" prefHeight="192.0" prefWidth="190.0" />
+      <Button fx:id="addToOrder" layoutX="386.0" layoutY="361.0" mnemonicParsing="false" text="Add to Order" />
+      <Label layoutX="131.0" layoutY="365.0" text="Sub-Total:" />
+      <Button fx:id="removeSelectedDonut" layoutX="416.0" layoutY="309.0" mnemonicParsing="false" text="Remove Selected Donut" />
+      <ListView fx:id="donutAddedListView" layoutX="401.0" layoutY="111.0" prefHeight="192.0" prefWidth="174.0" />
+      <ListView fx:id="donutFlavorListView" layoutX="20.0" layoutY="111.0" prefHeight="192.0" prefWidth="158.0" />
+      <ComboBox fx:id="typeOfDonut" layoutX="216.0" layoutY="164.0" prefWidth="150.0" promptText="Type Of Donut" />
+      <ComboBox fx:id="quantityOfDonut" layoutX="216.0" layoutY="219.0" prefWidth="150.0" promptText="Choose Quantity" />
+      <TextArea fx:id="subTotalTextArea" layoutX="198.0" layoutY="355.0" prefHeight="38.0" prefWidth="158.0" />
    </children>
 </AnchorPane>

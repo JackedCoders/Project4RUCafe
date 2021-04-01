@@ -2,7 +2,7 @@ package RUCafe;
 
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
-import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.*;
 
 import javax.print.CancelablePrintJob;
 
@@ -12,9 +12,18 @@ import javax.print.CancelablePrintJob;
  */
 public class OrderingDonutsController {
 
-    String typeDonuts[] = {"Yeast Donut", "Cake Donut", "Donut Hole"};
     @FXML
-    ChoiceBox  typeDonutsChoiceBox = new ChoiceBox(FXCollections.observableArrayList(typeDonuts));
+    private ListView donutFlavorListView, donutAddedListView;
+
+    @FXML
+    private Button addToOrder, removeSelectedDonut;
+
+    @FXML
+    private TextArea subTotalTextArea;
+
+    @FXML
+    private ComboBox typeOfDonut, quantityOfDonut;
+
 
 
 }
