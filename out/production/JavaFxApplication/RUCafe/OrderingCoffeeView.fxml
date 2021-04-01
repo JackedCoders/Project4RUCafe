@@ -27,6 +27,5 @@
       <ComboBox fx:id="coffeeOrderSize" layoutX="310.0" layoutY="211.0" prefWidth="150.0" />
       <ComboBox fx:id="coffeeOrderQuantity" layoutX="310.0" layoutY="247.0" prefWidth="150.0" />
       <TextArea fx:id="textArea" layoutX="175.0" layoutY="317.0" prefHeight="36.0" prefWidth="121.0" />
-      <TextField layoutX="386.0" layoutY="286.0" />
    </children>
 </AnchorPane>
