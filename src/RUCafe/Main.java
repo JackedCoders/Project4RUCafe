@@ -17,7 +17,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         try{
-            Parent root = FXMLLoader.load(getClass().getResource("OrderingCoffeeView.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("OrderingDonutsView.fxml"));
             primaryStage.setTitle("Welcome to RU Cafe!!");
             primaryStage.setScene(new Scene(root, 600, 450));
             primaryStage.show();

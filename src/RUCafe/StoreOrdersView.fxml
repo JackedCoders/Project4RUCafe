@@ -4,7 +4,6 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-
 <AnchorPane prefHeight="367.0" prefWidth="536.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="RUCafe.StoreOrdersController">
    <children>
       <Label layoutX="189.0" layoutY="14.0" text="Store Orders" underline="true">
@@ -12,11 +11,11 @@
             <Font size="25.0" />
          </font>
       </Label>
-      <ComboBox layoutX="57.0" layoutY="64.0" prefWidth="150.0" />
+      <ComboBox fx:id="orderNumberCombobox" layoutX="57.0" layoutY="64.0" prefWidth="150.0" />
       <Label layoutX="245.0" layoutY="68.0" text="Total for this order:" />
-      <TextField layoutX="356.0" layoutY="64.0" />
-      <Button layoutX="102.0" layoutY="330.0" mnemonicParsing="false" text="Cacnel Selected Order" />
-      <Button layoutX="290.0" layoutY="330.0" mnemonicParsing="false" text="Export Orders" />
-      <ListView layoutX="93.0" layoutY="111.0" prefHeight="200.0" prefWidth="350.0" />
+      <TextField fx:id="totalForSelectedOrderTxtField" layoutX="356.0" layoutY="64.0" />
+      <Button fx:id="cancelSelectedOrder" layoutX="102.0" layoutY="330.0" mnemonicParsing="false" text="Cancel Selected Order" />
+      <Button fx:id="exportOrders" layoutX="290.0" layoutY="330.0" mnemonicParsing="false" text="Export Orders" />
+      <ListView fx:id="ListOfOrderListView" layoutX="93.0" layoutY="111.0" prefHeight="200.0" prefWidth="350.0" />
    </children>
 </AnchorPane>
