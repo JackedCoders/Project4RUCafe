@@ -13,7 +13,16 @@ public class Coffee extends MenuItem implements Customizable{
     final double VENTI_COFFEE_PRICE = 3.49;
 
     private int coffeeSize; //0 == short, 1 == tall, 2 ==grande, 3 == venti
-    private int numAddIns;
+    private int numAddIns = 0;
+
+    public void addTopping(){
+        numAddIns++;
+    }
+
+    public void removeTopping(){
+        numAddIns--;
+    }
+
 
     /**
      *

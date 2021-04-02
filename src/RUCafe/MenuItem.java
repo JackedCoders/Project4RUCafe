@@ -11,4 +11,8 @@ public class MenuItem {
     public void itemPrice(double itemPrice){
         this.itemPrice = itemPrice;
     }
+
+    public double getItemPrice(){
+        return itemPrice;
+    }
 }
