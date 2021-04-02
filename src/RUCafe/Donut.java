@@ -11,7 +11,9 @@ public class Donut extends MenuItem implements Customizable{
 
     private int donutType; //0==yeast, 1==cake, 2==donut hole
 
-
+    public Donut(int donutType){
+        this.donutType = donutType;
+    }
 
     /**
      *
