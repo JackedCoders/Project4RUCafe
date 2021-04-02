@@ -28,7 +28,7 @@
                </image>
             </ImageView>
          </graphic></Button>
-      <Button fx:id="ViewYourOrderButton" layoutX="344.0" layoutY="227.0" mnemonicParsing="false" onAction="#viewYourCurrentOrder" prefHeight="47.0" prefWidth="185.0" text="View Your Order">
+      <Button fx:id="ViewYourOrderButton" layoutX="70.0" layoutY="215.0" mnemonicParsing="false" onAction="#viewYourCurrentOrder" prefHeight="47.0" prefWidth="185.0" text="View Your Order">
          <graphic>
             <ImageView fitHeight="32.0" fitWidth="66.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -37,7 +37,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="ViewStoreOrdersButton" layoutX="70.0" layoutY="227.0" mnemonicParsing="false" onAction="#viewAllStoreOrders" prefHeight="29.0" prefWidth="185.0" text="View Store Orders">
+      <Button fx:id="ViewStoreOrdersButton" layoutX="344.0" layoutY="215.0" mnemonicParsing="false" onAction="#viewAllStoreOrders" prefHeight="29.0" prefWidth="185.0" text="View Store Orders">
          <graphic>
             <ImageView fitHeight="39.0" fitWidth="115.0" pickOnBounds="true" preserveRatio="true">
                <image>
