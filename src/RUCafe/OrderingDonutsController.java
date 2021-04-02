@@ -39,7 +39,6 @@ public class OrderingDonutsController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle){
         ObservableList<String> typeOfDonut = FXCollections.observableArrayList("Yeast Donut" , "Cake Donut" , "Donut Holes");
         ObservableList<String> quantityOfDonut = FXCollections.observableArrayList("1" , "2", "3" );
-        
     }
 
 }
