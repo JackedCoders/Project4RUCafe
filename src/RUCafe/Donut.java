@@ -10,15 +10,21 @@ public class Donut extends MenuItem implements Customizable{
     final double DONUT_HOLE_PRICE = 0.33;
 
     private int donutType; //0==yeast, 1==cake, 2==donut hole
-    
-    public
+
+
 
     /**
      *
      * @return
      */
     public void itemPrice(){
-        return 0;
+        if(donutType == 0){
+            super.itemPrice(YEAST_DONUT_PRICE);
+        }if(donutType == 1){
+            super.itemPrice(CAKE_DONUT_PRICE);
+        }if(donutType == 2){
+            super.itemPrice(DONUT_HOLE_PRICE);
+        }
     }
 
     /**
