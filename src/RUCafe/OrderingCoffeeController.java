@@ -77,9 +77,67 @@ public class OrderingCoffeeController {
             newCoffee.itemPrice();
             String s = String.format("%.02f", newCoffee.getItemPrice());
             textArea.setText(String.valueOf(s));
-
         }
     }
 
+    /**
+     *
+     * @param event
+     */
+    @FXML
+    void addToppingCaramel(ActionEvent event){
+        if(Caramel.isSelected()){
+            newCoffee.add(Caramel);
+            newCoffee.addTopping();
+            newCoffee.itemPrice();
+            String s = String.format("%.02f", newCoffee.getItemPrice());
+            textArea.setText(String.valueOf(s));
+        }else{
+            newCoffee.removeTopping();
+            newCoffee.itemPrice();
+            String s = String.format("%.02f", newCoffee.getItemPrice());
+            textArea.setText(String.valueOf(s));
+        }
+    }
+
+    /**
+     *
+     * @param event
+     */
+    @FXML
+    void addToppingCream(ActionEvent event){
+        if(Cream.isSelected()){
+            newCoffee.add(Cream);
+            newCoffee.addTopping();
+            newCoffee.itemPrice();
+            String s = String.format("%.02f", newCoffee.getItemPrice());
+            textArea.setText(String.valueOf(s));
+        }else{
+            newCoffee.removeTopping();
+            newCoffee.itemPrice();
+            String s = String.format("%.02f", newCoffee.getItemPrice());
+            textArea.setText(String.valueOf(s));
+        }
+    }
+
+    /**
+     *
+     * @param event
+     */
+    @FXML
+    void addToppingWhippedCream(ActionEvent event){
+        if(WhippedCream.isSelected()){
+            newCoffee.add(WhippedCream);
+            newCoffee.addTopping();
+            newCoffee.itemPrice();
+            String s = String.format("%.02f", newCoffee.getItemPrice());
+            textArea.setText(String.valueOf(s));
+        }else{
+            newCoffee.removeTopping();
+            newCoffee.itemPrice();
+            String s = String.format("%.02f", newCoffee.getItemPrice());
+            textArea.setText(String.valueOf(s));
+        }
+    }
 
 }

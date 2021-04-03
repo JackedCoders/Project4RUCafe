@@ -12,7 +12,9 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 /**
- *
+ * Controller class for the primary MainMenu GUI that is the backbone of this project. Class directly loads other
+ * GUIs such as Coffee, Donut, View current orders and overall store orders. This class also allows us to keep the
+ * main GUI visible at all times
  * @author Manveer Singh, Prasidh Sriram
  */
 public class MainMenuController {
@@ -22,7 +24,8 @@ public class MainMenuController {
 
 
     /**
-     *
+     * FXML method that loads the Coffee ordering GUI (OrderingCoffeeView.fxml) and sets the stage so
+     * the user can directly order coffee
      * @param event
      * @throws IOException
      */
@@ -37,7 +40,8 @@ public class MainMenuController {
     }
 
     /**
-     *
+     * FXML method that loads the Donut ordering GUI (OrderingDonutView.fxml) and sets the stage so
+     * the user can directly order donut(s)(types and flavors)
      * @param event
      * @throws IOException
      */
@@ -52,7 +56,8 @@ public class MainMenuController {
     }
 
     /**
-     *
+     * FXML method that loads the overall store orders GUI (StoreOrdersView.fxml) and sets the stage so
+     * we can see all the orders the cafe has received
      * @param event
      * @throws IOException
      */
@@ -67,7 +72,8 @@ public class MainMenuController {
     }
 
     /**
-     *
+     * FXML method that loads the current order details (CurrentOrderDetailView.fxml) and sets the stage so
+     * we can view the current orders being placed by the user
      * @param event
      * @throws IOException
      */

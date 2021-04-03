@@ -16,7 +16,9 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 /**
- *
+ * Controller class for our donut GUI (OrderingDonutsView.fxml) which performs several different actions like
+ * initializing donut types, donut flavors, adding specific donuts to the order and removing selected based on user
+ * preference along with displaying the correct overall price of the order and a toString method to allow for export
  * @author Manveer Singh, Prasidh Sriram
  */
 public class OrderingDonutsController implements Initializable {
@@ -85,7 +87,8 @@ public class OrderingDonutsController implements Initializable {
     }
 
     /**
-     *
+     *  Method to allow the user to remove donuts selected on a listView along with displaying invalid occurence messages
+     *  and displaying current overall cost of the order thus far.
      * @param mouseEvent
      */
     @FXML
@@ -104,7 +107,8 @@ public class OrderingDonutsController implements Initializable {
     }
 
     /**
-     *
+     * This method performs logic for the quantity of donuts chosen by the user and appropriately displays warning signs,
+     * alert messages along with displays overall price of the order thus far.
      * @param event
      */
     @FXML
