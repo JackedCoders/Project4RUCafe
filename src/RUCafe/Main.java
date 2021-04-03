@@ -4,7 +4,12 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
+
+import java.lang.reflect.AnnotatedArrayType;
 
 /**
  * Main class for our project, creates the stage and loads the primary GUI of the project (MainMenuView.fxml). The class
@@ -22,9 +27,12 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         try{
-            Parent root = FXMLLoader.load(getClass().getResource("MainMenuView.fxml"));
+            AnchorPane root = (AnchorPane) FXMLLoader.load(getClass().getResource("MainMenuView.fxml")) ;
+            Scene s = new Scene(root, 600,450);
+            primaryStage.setResizable(false);
+            primaryStage.initStyle(StageStyle.UTILITY); //disables maximize and minimize so user can not close of the GUI
+            primaryStage.setScene(s);
             primaryStage.setTitle("Welcome to RU Cafe!!");
-            primaryStage.setScene(new Scene(root, 600, 450));
             primaryStage.show();
         } catch( Exception e){
             e.printStackTrace();
