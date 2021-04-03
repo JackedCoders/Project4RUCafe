@@ -15,6 +15,14 @@ public class Coffee extends MenuItem implements Customizable{
     private int coffeeSize; //0 == short, 1 == tall, 2 ==grande, 3 == venti
     private int numAddIns = 0;
 
+    public Coffee(){
+
+    }
+
+    public Coffee(int coffeeSize){
+        this.coffeeSize = coffeeSize;
+    }
+
     /**
      *
      */
