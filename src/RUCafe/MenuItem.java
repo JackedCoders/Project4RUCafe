@@ -10,6 +10,10 @@ public class MenuItem {
 
     protected double itemPrice;
 
+    public void itemPrice(double itemPrice){
+        this.itemPrice = itemPrice;
+    }
+
     /**
      * getter method that returns the protected instance variable itemPrice of this class
      * when called in other classes
