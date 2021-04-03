@@ -8,6 +8,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.ComboBox;
 import javax.print.CancelablePrintJob;
+import java.awt.event.MouseEvent;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -50,9 +51,10 @@ public class OrderingDonutsController implements Initializable {
         quantityOfDonut.setItems(quantityOfDonutList);
     }
 
+
     /**
      * This method populates the type of donut List View on our GUI with the flavors that are chosen.
-     * Note that this method includes at least 3 flavors for each donutType 
+     * Note that this method includes at least 3 flavors for each donutType
      * @param event
      */
     @FXML
@@ -79,4 +81,35 @@ public class OrderingDonutsController implements Initializable {
         }
     }
 
+    /**
+     *
+     * @param mouseEvent
+     */
+    @FXML
+    void removeSelectedDonutRightListView(javafx.scene.input.MouseEvent mouseEvent) {
+        String name = donutAddedListView.getSelectionModel().getSelectedItem();
+        if(name == null){
+            Alert showErrorNull = new Alert(Alert.AlertType.WARNING);
+            showErrorNull.setContentText("No donut was selected! Select a donut and try again");
+            showErrorNull.setTitle("Try again");
+            showErrorNull.showAndWait();
+        }else{
+            donutAddedListView.getItems().remove(name);
+            String s = String.format("%.02f", newDonut.itemPrice());
+            subTotalTextArea.setText(String.valueOf(s));
+        }
+    }
+
+    /**
+     *
+     * @param event
+     */
+    @FXML
+    void setQuantityOfDonut(ActionEvent event){
+        String nameOfDonut = donutFlavorListView.getSelectionModel().getSelectedItem();
+        String quantityOfDonuts = quantityOfDonut.getSelectionModel().getSelectedItem().toString(); //should return 1,2 or 3
+        if(n)
+
+
+    }
 }
