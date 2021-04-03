@@ -36,7 +36,11 @@ public class OrderingCoffeeController {
     Coffee newCoffee = new Coffee();
     Order newOrder = new Order();
     StoreOrders newTotalOrder = new StoreOrders();
-    
+
+    /**
+     *
+     * @param event
+     */
     @FXML
     void addToppingMilk(ActionEvent event){
         if(Milk.isSelected()){
