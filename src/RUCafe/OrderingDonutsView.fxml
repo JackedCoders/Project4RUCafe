@@ -7,27 +7,26 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="RUCafe.OrderingDonutsController">
    <children>
-      <Label layoutX="216.0" layoutY="25.0" text="Order Donuts" textAlignment="CENTER" underline="true">
+      <Label layoutX="222.0" layoutY="1.0" text="Order Donuts" textAlignment="CENTER" underline="true">
          <font>
             <Font size="23.0" />
          </font></Label>
-      <ImageView fitHeight="82.0" fitWidth="127.0" layoutX="448.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="82.0" fitWidth="127.0" layoutX="427.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@DonutsPicMainMenu1.jpg" />
          </image>
       </ImageView>
-      <ImageView fitHeight="82.0" fitWidth="127.0" layoutX="29.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@DonutsPicMainMenu1.jpg" />
-         </image>
-      </ImageView>
-      <Button fx:id="addToOrder" layoutX="386.0" layoutY="361.0" mnemonicParsing="false" text="Add to Order" />
-      <Label layoutX="131.0" layoutY="365.0" text="Sub-Total:" />
-      <Button fx:id="removeSelectedDonut" layoutX="416.0" layoutY="309.0" mnemonicParsing="false" onMouseClicked="#removeSelectedDonutRightListView" text="Remove Selected Donut" />
-      <ListView fx:id="donutAddedListView" layoutX="401.0" layoutY="111.0" prefHeight="192.0" prefWidth="174.0" />
-      <ListView fx:id="donutFlavorListView" layoutX="20.0" layoutY="111.0" prefHeight="192.0" prefWidth="158.0" />
+      <Button fx:id="addToOrder" layoutX="279.0" layoutY="348.0" mnemonicParsing="false" text="Add to Order" />
+      <Label layoutX="33.0" layoutY="352.0" text="Sub-Total:" />
+      <Button fx:id="removeSelectedDonut" layoutX="417.0" layoutY="323.0" mnemonicParsing="false" onMouseClicked="#removeSelectedDonutRightListView" text="Remove Selected Donut" />
+      <ListView fx:id="donutAddedListView" layoutX="401.0" layoutY="146.0" prefHeight="171.0" prefWidth="174.0" />
+      <ListView fx:id="donutFlavorListView" layoutX="28.0" layoutY="146.0" prefHeight="171.0" prefWidth="174.0" />
       <ComboBox fx:id="typeOfDonut" layoutX="216.0" layoutY="164.0" onAction="#fillListViewLeft" prefWidth="150.0" promptText="Type Of Donut" />
       <ComboBox fx:id="quantityOfDonut" layoutX="216.0" layoutY="219.0" onAction="#setQuantityOfDonut" prefWidth="150.0" promptText="Choose Quantity" />
-      <TextArea fx:id="subTotalTextArea" layoutX="198.0" layoutY="355.0" prefHeight="38.0" prefWidth="158.0" />
+      <TextArea fx:id="subTotalTextArea" layoutX="100.0" layoutY="342.0" prefHeight="38.0" prefWidth="158.0" />
+      <Label layoutX="28.0" layoutY="41.0" text="First, Select the type of donut desired" />
+      <Label layoutX="28.0" layoutY="64.0" text="Second, Select the flavor desired on the left" />
+      <Label layoutX="28.0" layoutY="88.0" text="Finally, Choose the quantity to add the donut to the order on the right" />
+      <Label layoutX="28.0" layoutY="113.0" text="To remove, select the donut on the right and click the remove button" />
    </children>
 </AnchorPane>

@@ -36,7 +36,7 @@ public class OrderingDonutsController implements Initializable {
     private int yeastDonut = 0;
     private int cakeDonut = 1;
     private int donutHole = 2;
-    Donut newDonut = new Donut(0);
+    Donut newDonut = new Donut(yeastDonut);
     Order newOrder = new Order();
     Alert neAlert = new Alert(Alert.AlertType.WARNING);
 
@@ -115,8 +115,8 @@ public class OrderingDonutsController implements Initializable {
             if(nameOfDonut == null){
                 //throw null errors here I think
                 Alert showErrorNull = new Alert(Alert.AlertType.WARNING);
-                showErrorNull.setContentText("No donut was selected! Select a donut and try again");
-                showErrorNull.setTitle("Try again");
+                showErrorNull.setContentText("Donut selection & flavor is required before quantity can be chosen");
+                showErrorNull.setTitle("Choose donut first & Try Again");
                 showErrorNull.showAndWait();
             }else{
                 String s = String.format("%.02f", newDonut.getItemPrice());
@@ -129,8 +129,8 @@ public class OrderingDonutsController implements Initializable {
             if(nameOfDonut == null){
                 //throw null errors here I think
                 Alert showErrorNull = new Alert(Alert.AlertType.WARNING);
-                showErrorNull.setContentText("No donut was selected! Select a donut and try again");
-                showErrorNull.setTitle("Try again");
+                showErrorNull.setContentText("Donut selection & flavor is required before quantity can be chosen");
+                showErrorNull.setTitle("Choose donut first & Try Again");
                 showErrorNull.showAndWait();
             }else{
                 final int TWO_ORDERS_OF_DONUT = 2;
@@ -144,8 +144,8 @@ public class OrderingDonutsController implements Initializable {
             if(nameOfDonut == null){
                 //throw null errors here I think
                 Alert showErrorNull = new Alert(Alert.AlertType.WARNING);
-                showErrorNull.setContentText("No donut was selected! Select a donut and try again");
-                showErrorNull.setTitle("Try again");
+                showErrorNull.setContentText("Donut selection & flavor is required before quantity can be chosen");
+                showErrorNull.setTitle("Choose donut first & Try Again");
                 showErrorNull.showAndWait();
             }else{
                 final int THREE_ORDERS_OF_DONUT = 3;
@@ -167,8 +167,7 @@ public class OrderingDonutsController implements Initializable {
         Parent root = sendOrder.load();
         CurrentOrderDetailController newOrder = sendOrder.getController();
 
-
-
+        //COME BACK TO THIS ADD ORDER TO BACK PART
 
     }
 

@@ -1,5 +1,6 @@
 package RUCafe;
 
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
@@ -16,6 +17,16 @@ public class CurrentOrderDetailController {
     private Button RemoveSelectedItem, placeOrder;
 
     @FXML
-    private ListView currentOrderListView;
+    private ListView<String> currentOrderListView;
+
+    /**
+     *
+     * @param infoDonuts
+     * @param subTotal
+     */
+    public void displayOrders(ObservableList<String> infoDonuts, String subTotal){
+        currentOrderListView.getItems().addAll(infoDonuts);
+        subTotalCurrentOrder.setText(String.valueOf(subTotal));
+    }
 
 }

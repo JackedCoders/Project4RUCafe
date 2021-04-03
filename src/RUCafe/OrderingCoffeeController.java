@@ -57,54 +57,16 @@ public class OrderingCoffeeController {
             textArea.setText(String.valueOf(s));
 
         }
+    }
 
+    /**
+     *
+     * @param event
+     */
+    @FXML
+    void addToppingSyrup(ActionEvent event){
         if(Syrup.isSelected()){
-            newCoffee.add(Milk);
-            newCoffee.addTopping();
-            newCoffee.itemPrice();
-            String s = String.format("%.02f", newCoffee.getItemPrice());
-            textArea.setText(String.valueOf(s));
-
-        }else{
-            newCoffee.removeTopping();
-            newCoffee.itemPrice();
-            String s = String.format("%.02f", newCoffee.getItemPrice());
-            textArea.setText(String.valueOf(s));
-
-        }
-
-        if(Caramel.isSelected()){
-            newCoffee.add(Milk);
-            newCoffee.addTopping();
-            newCoffee.itemPrice();
-            String s = String.format("%.02f", newCoffee.getItemPrice());
-            textArea.setText(String.valueOf(s));
-
-        }else{
-            newCoffee.removeTopping();
-            newCoffee.itemPrice();
-            String s = String.format("%.02f", newCoffee.getItemPrice());
-            textArea.setText(String.valueOf(s));
-
-        }
-
-        if(Cream.isSelected()){
-            newCoffee.add(Milk);
-            newCoffee.addTopping();
-            newCoffee.itemPrice();
-            String s = String.format("%.02f", newCoffee.getItemPrice());
-            textArea.setText(String.valueOf(s));
-
-        }else{
-            newCoffee.removeTopping();
-            newCoffee.itemPrice();
-            String s = String.format("%.02f", newCoffee.getItemPrice());
-            textArea.setText(String.valueOf(s));
-
-        }
-
-        if(WhippedCream.isSelected()){
-            newCoffee.add(Milk);
+            newCoffee.add(Syrup);
             newCoffee.addTopping();
             newCoffee.itemPrice();
             String s = String.format("%.02f", newCoffee.getItemPrice());
@@ -118,5 +80,6 @@ public class OrderingCoffeeController {
 
         }
     }
+
 
 }
