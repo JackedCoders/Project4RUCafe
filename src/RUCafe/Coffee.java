@@ -28,17 +28,21 @@ public class Coffee extends MenuItem implements Customizable{
      *
      * @return
      */
-//    public void itemPrice(){
-//        if(coffeeSize == 0){
-//            super.itemPrice(COST_PER_ADDIN*numAddIns + SHORT_COFFEE_PRICE);
-//        }if(coffeeSize == 1){
-//            super.itemPrice(COST_PER_ADDIN*numAddIns + TALL_COFFEE_PRICE);
-//        }if(coffeeSize == 2){
-//            super.itemPrice(COST_PER_ADDIN*numAddIns + GRANDE_COFFEE_PRICE);
-//        }if(coffeeSize == 3){
-//            super.itemPrice(COST_PER_ADDIN*numAddIns + VENTI_COFFEE_PRICE);
-//        }
-//    }
+    public void itemPrice(){
+        if(coffeeSize == 0){
+            super.itemPrice(COST_PER_ADDIN*numAddIns + SHORT_COFFEE_PRICE);
+        }if(coffeeSize == 1){
+            super.itemPrice(COST_PER_ADDIN*numAddIns + TALL_COFFEE_PRICE);
+        }if(coffeeSize == 2){
+            super.itemPrice(COST_PER_ADDIN*numAddIns + GRANDE_COFFEE_PRICE);
+        }if(coffeeSize == 3){
+            super.itemPrice(COST_PER_ADDIN*numAddIns + VENTI_COFFEE_PRICE);
+        }
+    }
+
+    public double getPrice(){
+        return super.getItemPrice();
+    }
 
     /**
      *

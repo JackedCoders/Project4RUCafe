@@ -24,15 +24,6 @@ public class OrderingCoffeeController {
     @FXML
     private CheckBox Milk, Syrup, Caramel, Cream, WhippedCream;
 
-    Milk.selectedProperty().addListener(toppingCheckChange);
-    ChangeListener toppingCheckChange = new ChangeListener<Boolean>() {
-        @Override
-        public void changed(ObservableValue<? extends Boolean> ov,
-                            Boolean old_val, Boolean new_val) {
-            if (new_val)
-                Milk.setSelected(false);
-        }};
-
     @FXML
     private TextArea textArea;
 
@@ -41,5 +32,17 @@ public class OrderingCoffeeController {
 
     @FXML
     private ComboBox coffeeOrderSize, coffeeOrderQuantity;
+
+    Coffee newCoffee = new Coffee();
+    Order newOrder = new Order();
+
+    @FXML
+    void addToppingMilk(ActionEvent event){
+        if(Milk.isSelected()){
+
+        }else{
+
+        }
+    }
 
 }

@@ -5,6 +5,12 @@ package RUCafe;
  */
 public class Order implements Customizable{
 
+    private int order_ID; //Unique number assigned to each order
+
+    public int getOrder_ID(){
+        return order_ID;
+    }
+
     /**
      *
      * @param obj
