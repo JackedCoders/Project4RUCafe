@@ -32,8 +32,9 @@ public class MainMenuController {
     @FXML
     private void openCoffeeOrdering(ActionEvent event) throws IOException{
         Parent root_parent = FXMLLoader.load(getClass().getResource("OrderingCoffeeView.fxml"));
-        Scene root_scene = new Scene(root_parent);
+        Scene root_scene = new Scene(root_parent,600, 450);
         Stage root_stage = new Stage();
+        root_stage.resizableProperty().setValue(false);
         root_stage.setScene(root_scene);
         root_stage.setTitle("Order Coffee here!!");
         root_stage.show();
@@ -48,8 +49,9 @@ public class MainMenuController {
     @FXML
     private void openDonutOrdering(ActionEvent event) throws IOException{
         Parent root_parent = FXMLLoader.load(getClass().getResource("OrderingDonutsView.fxml"));
-        Scene root_scene = new Scene(root_parent);
+        Scene root_scene = new Scene(root_parent,600, 450);
         Stage root_stage = new Stage();
+        root_stage.resizableProperty().setValue(false);
         root_stage.setScene(root_scene);
         root_stage.setTitle("Order Donut here!!");
         root_stage.show();
@@ -64,8 +66,9 @@ public class MainMenuController {
     @FXML
     private void viewAllStoreOrders(ActionEvent event) throws IOException{
         Parent root_parent = FXMLLoader.load(getClass().getResource("StoreOrdersView.fxml"));
-        Scene root_scene = new Scene(root_parent);
+        Scene root_scene = new Scene(root_parent,600, 450);
         Stage root_stage = new Stage();
+        root_stage.resizableProperty().setValue(false);
         root_stage.setScene(root_scene);
         root_stage.setTitle("All of store orders here!!");
         root_stage.show();
@@ -80,8 +83,9 @@ public class MainMenuController {
     @FXML
     private void viewYourCurrentOrder(ActionEvent event) throws IOException{
         Parent root_parent = FXMLLoader.load(getClass().getResource("CurrentOrderDetailView.fxml"));
-        Scene root_scene = new Scene(root_parent);
+        Scene root_scene = new Scene(root_parent,600, 450);
         Stage root_stage = new Stage();
+        root_stage.resizableProperty().setValue(false);
         root_stage.setScene(root_scene);
         root_stage.setTitle("Your current order!!");
         root_stage.show();

@@ -28,7 +28,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
         try{
             AnchorPane root = (AnchorPane) FXMLLoader.load(getClass().getResource("MainMenuView.fxml")) ;
-            Scene s = new Scene(root, 600,450);
+            Scene s = new Scene(root, 750,500);
             primaryStage.setResizable(false);
             primaryStage.initStyle(StageStyle.UTILITY); //disables maximize and minimize so user can not close of the GUI
             primaryStage.setScene(s);
