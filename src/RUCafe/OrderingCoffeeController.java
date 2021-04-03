@@ -1,5 +1,6 @@
 package RUCafe;
 
+import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -22,8 +23,15 @@ public class OrderingCoffeeController {
 
     @FXML
     private CheckBox Milk, Syrup, Caramel, Cream, WhippedCream;
-    Milk = new CheckBox("Milk");
 
+    Milk.selectedProperty().addListener(toppingCheckChange);
+    ChangeListener toppingCheckChange = new ChangeListener<Boolean>() {
+        @Override
+        public void changed(ObservableValue<? extends Boolean> ov,
+                            Boolean old_val, Boolean new_val) {
+            if (new_val)
+                Milk.setSelected(false);
+        }};
 
     @FXML
     private TextArea textArea;
