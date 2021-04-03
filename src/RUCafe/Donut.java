@@ -18,7 +18,13 @@ public class Donut extends MenuItem implements Customizable{
      */
     public Donut(int donutType){
         this.donutType = donutType;
-
+        if(donutType == 0){
+            super.itemPrice(YEAST_DONUT_PRICE);
+        }if(donutType == 1){
+            super.itemPrice(CAKE_DONUT_PRICE);
+        }if(donutType == 2){
+            super.itemPrice(DONUT_HOLE_PRICE);
+        }
 
     }
 
