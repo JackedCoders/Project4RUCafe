@@ -95,7 +95,7 @@ public class OrderingDonutsController implements Initializable {
             showErrorNull.showAndWait();
         }else{
             donutAddedListView.getItems().remove(name);
-            String s = String.format("%.02f", newDonut.itemPrice());
+            String s = String.format("%.02f", newDonut.getItemPrice());
             subTotalTextArea.setText(String.valueOf(s));
         }
     }
@@ -116,7 +116,7 @@ public class OrderingDonutsController implements Initializable {
                 showErrorNull.setTitle("Try again");
                 showErrorNull.showAndWait();
             }else{
-                String s = String.format("%.02f", newDonut.itemPrice());
+                String s = String.format("%.02f", newDonut.getItemPrice());
                 subTotalTextArea.setText(String.valueOf(s));
                 donutAddedListView.getItems().add(nameOfDonut + "[1]");
                 addToOrder.setDisable(false);
@@ -131,7 +131,7 @@ public class OrderingDonutsController implements Initializable {
                 showErrorNull.showAndWait();
             }else{
                 final int TWO_ORDERS_OF_DONUT = 2;
-                String s = String.format("%.02f", newDonut.itemPrice() * TWO_ORDERS_OF_DONUT);
+                String s = String.format("%.02f", newDonut.getItemPrice() * TWO_ORDERS_OF_DONUT);
                 subTotalTextArea.setText(String.valueOf(s));
                 donutAddedListView.getItems().add(nameOfDonut + "[2]");
                 addToOrder.setDisable(false);
@@ -146,7 +146,7 @@ public class OrderingDonutsController implements Initializable {
                 showErrorNull.showAndWait();
             }else{
                 final int THREE_ORDERS_OF_DONUT = 3;
-                String s = String.format("%.02f", newDonut.itemPrice() * THREE_ORDERS_OF_DONUT);
+                String s = String.format("%.02f", newDonut.getItemPrice() * THREE_ORDERS_OF_DONUT);
                 subTotalTextArea.setText(String.valueOf(s));
                 donutAddedListView.getItems().add(nameOfDonut + "[3]");
                 addToOrder.setDisable(false);
