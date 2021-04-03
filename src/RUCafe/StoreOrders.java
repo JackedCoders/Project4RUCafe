@@ -4,6 +4,15 @@ package RUCafe;
  * @author Manveer Singh, Prasidh Sriram
  */
 public class StoreOrders implements Customizable{
+
+    private Order [] orderList;
+    private int numOrders;
+
+    public StoreOrders(){
+        orderList = new Order[5];
+        numOrders = 0;
+    }
+
     /**
      *
      * @param obj
@@ -11,6 +20,8 @@ public class StoreOrders implements Customizable{
      */
     @Override
     public boolean add(Object obj) {
+        Order newOrder = (Order) obj;
+        orderList[numOrders] = newOrder;
         return false;
     }
 

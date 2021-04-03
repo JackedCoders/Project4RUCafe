@@ -12,6 +12,10 @@ public class Order implements Customizable{
         return order_ID;
     }
 
+    public Order(){
+        itemList = new MenuItem[5];
+    }
+
     /**
      *
      * @param obj
