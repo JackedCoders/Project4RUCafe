@@ -90,7 +90,7 @@ public class OrderingDonutsController implements Initializable {
         String name = donutAddedListView.getSelectionModel().getSelectedItem();
         if(name == null){
             Alert showErrorNull = new Alert(Alert.AlertType.WARNING);
-            showErrorNull.setContentText("No donut was selected! Select a donut and try again");
+            showErrorNull.setContentText("No donut was selected! Select a donut to remove");
             showErrorNull.setTitle("Try again");
             showErrorNull.showAndWait();
         }else{
@@ -108,7 +108,50 @@ public class OrderingDonutsController implements Initializable {
     void setQuantityOfDonut(ActionEvent event){
         String nameOfDonut = donutFlavorListView.getSelectionModel().getSelectedItem();
         String quantityOfDonuts = quantityOfDonut.getSelectionModel().getSelectedItem().toString(); //should return 1,2 or 3
-        if(n)
+        if(quantityOfDonuts == "1"){
+            if(nameOfDonut == null){
+                //throw null errors here I think
+                Alert showErrorNull = new Alert(Alert.AlertType.WARNING);
+                showErrorNull.setContentText("No donut was selected! Select a donut and try again");
+                showErrorNull.setTitle("Try again");
+                showErrorNull.showAndWait();
+            }else{
+                String s = String.format("%.02f", newDonut.itemPrice());
+                subTotalTextArea.setText(String.valueOf(s));
+                donutAddedListView.getItems().add(nameOfDonut + "[1]");
+                addToOrder.setDisable(false);
+
+            }
+        } else if(quantityOfDonuts == "2"){
+            if(nameOfDonut == null){
+                //throw null errors here I think
+                Alert showErrorNull = new Alert(Alert.AlertType.WARNING);
+                showErrorNull.setContentText("No donut was selected! Select a donut and try again");
+                showErrorNull.setTitle("Try again");
+                showErrorNull.showAndWait();
+            }else{
+                final int TWO_ORDERS_OF_DONUT = 2;
+                String s = String.format("%.02f", newDonut.itemPrice() * TWO_ORDERS_OF_DONUT);
+                subTotalTextArea.setText(String.valueOf(s));
+                donutAddedListView.getItems().add(nameOfDonut + "[2]");
+                addToOrder.setDisable(false);
+
+            }
+        } else if(quantityOfDonuts == "3"){
+            if(nameOfDonut == null){
+                //throw null errors here I think
+                Alert showErrorNull = new Alert(Alert.AlertType.WARNING);
+                showErrorNull.setContentText("No donut was selected! Select a donut and try again");
+                showErrorNull.setTitle("Try again");
+                showErrorNull.showAndWait();
+            }else{
+                final int THREE_ORDERS_OF_DONUT = 3;
+                String s = String.format("%.02f", newDonut.itemPrice() * THREE_ORDERS_OF_DONUT);
+                subTotalTextArea.setText(String.valueOf(s));
+                donutAddedListView.getItems().add(nameOfDonut + "[3]");
+                addToOrder.setDisable(false);
+            }
+        }
 
 
     }
