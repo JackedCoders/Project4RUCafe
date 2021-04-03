@@ -15,10 +15,16 @@ public class Coffee extends MenuItem implements Customizable{
     private int coffeeSize; //0 == short, 1 == tall, 2 ==grande, 3 == venti
     private int numAddIns = 0;
 
+    /**
+     *
+     */
     public void addTopping(){
         numAddIns++;
     }
 
+    /**
+     *
+     */
     public void removeTopping(){
         numAddIns--;
     }
@@ -40,6 +46,10 @@ public class Coffee extends MenuItem implements Customizable{
         }
     }
 
+    /**
+     *
+     * @return
+     */
     public double getPrice(){
         return super.getItemPrice();
     }

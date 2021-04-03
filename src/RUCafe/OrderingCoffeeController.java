@@ -35,12 +35,22 @@ public class OrderingCoffeeController {
 
     Coffee newCoffee = new Coffee();
     Order newOrder = new Order();
-
+    StoreOrders newTotalOrder = new StoreOrders();
+    
     @FXML
     void addToppingMilk(ActionEvent event){
         if(Milk.isSelected()){
+            newCoffee.add(Milk);
+            newCoffee.addTopping();
+            newCoffee.itemPrice();
+            String s = String.format("%.02f", newCoffee.getItemPrice());
+            textArea.setText(String.valueOf(s));
 
         }else{
+            newCoffee.removeTopping();
+            newCoffee.itemPrice();
+            String s = String.format("%.02f", newCoffee.getItemPrice());
+            textArea.setText(String.valueOf(s));
 
         }
     }
