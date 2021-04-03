@@ -1,7 +1,9 @@
 package RUCafe;
 
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
@@ -20,6 +22,8 @@ public class OrderingCoffeeController {
 
     @FXML
     private CheckBox Milk, Syrup, Caramel, Cream, WhippedCream;
+    Milk = new CheckBox("Milk");
+
 
     @FXML
     private TextArea textArea;
