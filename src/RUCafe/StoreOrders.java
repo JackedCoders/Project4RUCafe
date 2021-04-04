@@ -13,6 +13,14 @@ public class StoreOrders implements Customizable{
         numOrders = 0;
     }
 
+    void grow(){
+        Order [] newList = new Order[numOrders + 5];
+        for(int i = 0; i < numOrders; i++){
+            newList[i] = orderList[i];
+        }
+        orderList = newList;
+    }
+
     /**
      *
      * @param obj
@@ -21,8 +29,10 @@ public class StoreOrders implements Customizable{
     @Override
     public boolean add(Object obj) {
         Order newOrder = (Order) obj;
+
         orderList[numOrders] = newOrder;
-        return false;
+        numOrders++;
+        return true;
     }
 
     /**

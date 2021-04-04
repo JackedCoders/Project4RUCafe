@@ -35,4 +35,17 @@ public class Order implements Customizable{
     public boolean remove(Object obj) {
         return false;
     }
+
+    public boolean equals(Object obj){
+        Order newOrder;
+        try{
+            newOrder = (Order) obj;
+        }catch(Exception e){
+            return false;
+        }
+        if( this.order_ID == newOrder.getOrder_ID()){
+            return true;
+        }
+        return false;
+    }
 }
