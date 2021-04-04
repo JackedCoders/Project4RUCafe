@@ -6,7 +6,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.RadioButton;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -18,7 +17,11 @@ import java.io.IOException;
  * main GUI visible at all times
  * @author Manveer Singh, Prasidh Sriram
  */
-public class MainMenuController {
+public class MainMenuController{
+    OrderingCoffeeController addInfoCoffee;
+    StoreOrdersController addInfoStores;
+    YourOrderDetailController addCurrentOrderInfo;
+    OrderingDonutsController addInfoDonut;
 
     @FXML
     private Button OrderDonutsButton, OrderCoffeeButton, ViewStoreOrdersButton, ViewYourOrderButton;
@@ -82,14 +85,14 @@ public class MainMenuController {
     }
 
     /**
-     * FXML method that loads the current order details (CurrentOrderDetailView.fxml) and sets the stage so
+     * FXML method that loads the current order details (YourOrderDetailView.fxml) and sets the stage so
      * we can view the current orders being placed by the user
      * @param event
      * @throws IOException
      */
     @FXML
     private void viewYourCurrentOrder(ActionEvent event) throws IOException{
-        Parent root_parent = FXMLLoader.load(getClass().getResource("CurrentOrderDetailView.fxml"));
+        Parent root_parent = FXMLLoader.load(getClass().getResource("YourOrderDetailView.fxml"));
         Scene root_scene = new Scene(root_parent,600, 450);
         Stage root_stage = new Stage();
         root_stage.initModality(Modality.WINDOW_MODAL);

@@ -36,6 +36,7 @@ public class OrderingDonutsController implements Initializable {
     @FXML
     private ComboBox<String> typeOfDonut;
 
+    private MainMenuController mainController;
     double overallDonutOrderPrice =0;
     private int yeastDonut = 0;
     private int cakeDonut = 1;
@@ -198,17 +199,9 @@ public class OrderingDonutsController implements Initializable {
         }
     }
 
-    /**
-     *
-     * @param event
-     */
     @FXML
-    void addToFinalOrder(MouseEvent event) throws IOException {
-        FXMLLoader sendOrder = new FXMLLoader(getClass().getResource("CurrentOrderDetailView.fxml"));
-        Parent root = sendOrder.load();
-        CurrentOrderDetailController newOrder = sendOrder.getController();
+    public void addDonutOrder(ActionEvent event){
 
-        //COME BACK TO THIS ADD ORDER TO BACK PART
 
     }
 

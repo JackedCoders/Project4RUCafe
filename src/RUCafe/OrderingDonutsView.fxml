@@ -16,7 +16,7 @@
             <Image url="@DonutsPicMainMenu1.jpg" />
          </image>
       </ImageView>
-      <Button fx:id="addToOrder" layoutX="279.0" layoutY="348.0" mnemonicParsing="false" text="Add to Order" />
+      <Button fx:id="addToOrder" layoutX="279.0" layoutY="348.0" mnemonicParsing="false" onAction="#addDonutOrder" text="Add to Order" />
       <Label layoutX="33.0" layoutY="352.0" text="Sub-Total:" />
       <Button fx:id="removeSelectedDonut" layoutX="417.0" layoutY="323.0" mnemonicParsing="false" onMouseClicked="#removeSelectedDonutRightListView" text="Remove Selected Donut" />
       <ListView fx:id="donutAddedListView" layoutX="388.0" layoutY="146.0" prefHeight="171.0" prefWidth="193.0" />
