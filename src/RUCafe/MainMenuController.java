@@ -7,6 +7,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -34,6 +35,8 @@ public class MainMenuController {
         Parent root_parent = FXMLLoader.load(getClass().getResource("OrderingCoffeeView.fxml"));
         Scene root_scene = new Scene(root_parent,600, 450);
         Stage root_stage = new Stage();
+        root_stage.initModality(Modality.WINDOW_MODAL);
+        root_stage.initOwner(Main.parentStage);
         root_stage.resizableProperty().setValue(false);
         root_stage.setScene(root_scene);
         root_stage.setTitle("Order Coffee here!!");
@@ -51,6 +54,8 @@ public class MainMenuController {
         Parent root_parent = FXMLLoader.load(getClass().getResource("OrderingDonutsView.fxml"));
         Scene root_scene = new Scene(root_parent,600, 450);
         Stage root_stage = new Stage();
+        root_stage.initModality(Modality.WINDOW_MODAL);
+        root_stage.initOwner(Main.parentStage);
         root_stage.resizableProperty().setValue(false);
         root_stage.setScene(root_scene);
         root_stage.setTitle("Order Donut here!!");
@@ -68,6 +73,8 @@ public class MainMenuController {
         Parent root_parent = FXMLLoader.load(getClass().getResource("StoreOrdersView.fxml"));
         Scene root_scene = new Scene(root_parent,600, 450);
         Stage root_stage = new Stage();
+        root_stage.initModality(Modality.WINDOW_MODAL);
+        root_stage.initOwner(Main.parentStage);
         root_stage.resizableProperty().setValue(false);
         root_stage.setScene(root_scene);
         root_stage.setTitle("All of store orders here!!");
@@ -85,6 +92,8 @@ public class MainMenuController {
         Parent root_parent = FXMLLoader.load(getClass().getResource("CurrentOrderDetailView.fxml"));
         Scene root_scene = new Scene(root_parent,600, 450);
         Stage root_stage = new Stage();
+        root_stage.initModality(Modality.WINDOW_MODAL);
+        root_stage.initOwner(Main.parentStage);
         root_stage.resizableProperty().setValue(false);
         root_stage.setScene(root_scene);
         root_stage.setTitle("Your current order!!");

@@ -11,7 +11,7 @@
          <font>
             <Font size="23.0" />
          </font></Label>
-      <ImageView fitHeight="82.0" fitWidth="127.0" layoutX="427.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="82.0" fitWidth="127.0" layoutX="463.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@DonutsPicMainMenu1.jpg" />
          </image>
@@ -21,12 +21,14 @@
       <Button fx:id="removeSelectedDonut" layoutX="417.0" layoutY="323.0" mnemonicParsing="false" onMouseClicked="#removeSelectedDonutRightListView" text="Remove Selected Donut" />
       <ListView fx:id="donutAddedListView" layoutX="401.0" layoutY="146.0" prefHeight="171.0" prefWidth="174.0" />
       <ListView fx:id="donutFlavorListView" layoutX="28.0" layoutY="146.0" prefHeight="171.0" prefWidth="174.0" />
-      <ComboBox fx:id="typeOfDonut" layoutX="216.0" layoutY="164.0" onAction="#fillListViewLeft" prefWidth="150.0" promptText="Type Of Donut" />
-      <ComboBox fx:id="quantityOfDonut" layoutX="216.0" layoutY="219.0" onAction="#setQuantityOfDonut" prefWidth="150.0" promptText="Choose Quantity" />
+      <ComboBox fx:id="typeOfDonut" layoutX="226.0" layoutY="164.0" onAction="#fillListViewLeft" prefWidth="150.0" promptText="Type Of Donut" />
       <TextArea fx:id="subTotalTextArea" layoutX="100.0" layoutY="342.0" prefHeight="38.0" prefWidth="158.0" />
-      <Label layoutX="28.0" layoutY="41.0" text="First, Select the type of donut desired" />
+      <Label layoutX="28.0" layoutY="41.0" text="First, Select the type of donut desired using the drop down list" />
       <Label layoutX="28.0" layoutY="64.0" text="Second, Select the flavor desired on the left" />
-      <Label layoutX="28.0" layoutY="88.0" text="Finally, Choose the quantity to add the donut to the order on the right" />
+      <Label layoutX="28.0" layoutY="88.0" text="Finally, click on the quantity buttons to add the donut(s) to the order on the right" />
       <Label layoutX="28.0" layoutY="113.0" text="To remove, select the donut on the right and click the remove button" />
+      <Button fx:id="addOneSelectedDonut" layoutX="228.0" layoutY="200.0" mnemonicParsing="false" onAction="#addOneDonutToOrder" text="Add 1 of Selected donut" />
+      <Button fx:id="addTwoSelectedDonuts" layoutX="226.0" layoutY="232.0" mnemonicParsing="false" onAction="#addOTwoDonutToOrder" text="Add 2 of selected donuts" />
+      <Button fx:id="addThreeSelectedDonuts" layoutX="226.0" layoutY="265.0" mnemonicParsing="false" onAction="#addOThreeDonutToOrder" text="Add 3 of selected donuts" />
    </children>
 </AnchorPane>

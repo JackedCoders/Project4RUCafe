@@ -25,7 +25,7 @@
       <Label layoutX="154.0" layoutY="318.0" text="Cost:" />
       <Button fx:id="addToOrder" layoutX="357.0" layoutY="316.0" mnemonicParsing="false" text="Add To Order" />
       <TextArea fx:id="textArea" layoutX="200.0" layoutY="310.0" prefHeight="36.0" prefWidth="121.0" />
-      <MenuButton layoutX="315.0" layoutY="200.0" mnemonicParsing="false">
+      <MenuButton layoutX="315.0" layoutY="200.0" mnemonicParsing="false" text="Choose Coffee Size">
         <items>
           <MenuItem mnemonicParsing="false" text="Short" />
             <MenuItem mnemonicParsing="false" text="Venti" />
@@ -33,7 +33,7 @@
             <MenuItem mnemonicParsing="false" text="Grande" />
         </items>
       </MenuButton>
-      <MenuButton layoutX="318.0" layoutY="236.0" mnemonicParsing="false" text="Choose quantity">
+      <MenuButton layoutX="318.0" layoutY="236.0" mnemonicParsing="false" text="Choose Quantity">
         <items>
           <MenuItem mnemonicParsing="false" text="Action 1" />
           <MenuItem mnemonicParsing="false" text="Action 2" />

@@ -19,6 +19,7 @@ import java.lang.reflect.AnnotatedArrayType;
  */
 public class Main extends Application {
 
+    public static Stage parentStage; //allows to access the object within the controller for other classes
     /**
      *
      * @param primaryStage
@@ -27,6 +28,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         try{
+            Main.parentStage = primaryStage;
             AnchorPane root = (AnchorPane) FXMLLoader.load(getClass().getResource("MainMenuView.fxml")) ;
             Scene s = new Scene(root, 750,500);
             primaryStage.setResizable(false);
