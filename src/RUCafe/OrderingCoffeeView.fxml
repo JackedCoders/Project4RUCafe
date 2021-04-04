@@ -17,11 +17,11 @@
             <Image url="@CoffeePicMainMenu.jpg" />
          </image>
       </ImageView>
-      <CheckBox fx:id="Cream" layoutX="206.0" layoutY="203.0" mnemonicParsing="false" text="Cream" />
+      <CheckBox fx:id="Cream" layoutX="206.0" layoutY="203.0" mnemonicParsing="false" onAction="#addToppingCream" text="Cream" />
       <CheckBox fx:id="Milk" layoutX="128.0" layoutY="203.0" mnemonicParsing="false" onAction="#addToppingMilk" text="Milk" />
-      <CheckBox fx:id="WhippedCream" layoutX="205.0" layoutY="239.0" mnemonicParsing="false" text="Whipped Cream" />
+      <CheckBox fx:id="WhippedCream" layoutX="205.0" layoutY="239.0" mnemonicParsing="false" onAction="#addToppingWhippedCream" text="Whipped Cream" />
       <CheckBox fx:id="Syrup" layoutX="128.0" layoutY="239.0" mnemonicParsing="false" onAction="#addToppingSyrup" text="Syrup" />
-      <CheckBox fx:id="Caramel" layoutX="128.0" layoutY="278.0" mnemonicParsing="false" text="Caramel" />
+      <CheckBox fx:id="Caramel" layoutX="128.0" layoutY="278.0" mnemonicParsing="false" onAction="#addToppingCaramel" text="Caramel" />
       <Label layoutX="154.0" layoutY="318.0" text="Cost:" />
       <Button fx:id="addToOrder" layoutX="357.0" layoutY="316.0" mnemonicParsing="false" text="Add To Order" />
       <TextArea fx:id="textArea" layoutX="200.0" layoutY="310.0" prefHeight="36.0" prefWidth="121.0" />

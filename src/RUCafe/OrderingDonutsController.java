@@ -43,7 +43,6 @@ public class OrderingDonutsController implements Initializable {
     Donut newDonut = new Donut(yeastDonut);
     Order newOrder = new Order();
     Alert neAlert = new Alert(Alert.AlertType.WARNING);
-
     /**
      * This method populates the comboboxes with the type of donuts and the amount a user wants in that order to be added to the cart
      * using observableLists of type string. automatically populates upon running the GUI
@@ -101,12 +100,29 @@ public class OrderingDonutsController implements Initializable {
             showErrorNull.setTitle("Try again");
             showErrorNull.showAndWait();
         }else{
-                double newPrice = overallDonutOrderPrice - newDonut.getItemPrice();
-                String s = String.format("%.02f", newPrice);
-                donutAddedListView.getItems().remove(name);
-                subTotalTextArea.setText(s);
+                if(newDonut.quantityOfDonut == 1){
+                    double newPrice = overallDonutOrderPrice - newDonut.getItemPrice();
+                   overallDonutOrderPrice -= newDonut.getItemPrice();
+                    String s = String.format("%.02f", newPrice);
+                    donutAddedListView.getItems().remove(name);
+                    subTotalTextArea.setText(s);
+                    System.out.println("1 quan");
+                }else if (newDonut.quantityOfDonut == 2){
+                    double newPrice = overallDonutOrderPrice -(newDonut.getItemPrice()*2);
+                   overallDonutOrderPrice -= (newDonut.getItemPrice()*2);
+                    String s = String.format("%.02f", newPrice);
+                    donutAddedListView.getItems().remove(name);
+                    subTotalTextArea.setText(s);
+                    System.out.println("2 quan");
+                }else if(newDonut.quantityOfDonut == 3){
+                    double newPrice = overallDonutOrderPrice - (newDonut.getItemPrice()*3);
+                    overallDonutOrderPrice -= (newDonut.getItemPrice()*3);
+                    String s = String.format("%.02f", newPrice);
+                    donutAddedListView.getItems().remove(name);
+                    subTotalTextArea.setText(s);
+                    System.out.println("3 quan");
+                }
         }
-
         if(donutAddedListView.getItems().isEmpty()){
             subTotalTextArea.setText("0.00");
             overallDonutOrderPrice = 0;
