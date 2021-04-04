@@ -106,21 +106,18 @@ public class OrderingDonutsController implements Initializable {
                     String s = String.format("%.02f", newPrice);
                     donutAddedListView.getItems().remove(name);
                     subTotalTextArea.setText(s);
-                    System.out.println("1 quan");
                 }else if (newDonut.quantityOfDonut == 2){
                     double newPrice = overallDonutOrderPrice -(newDonut.getItemPrice()*2);
                    overallDonutOrderPrice -= (newDonut.getItemPrice()*2);
                     String s = String.format("%.02f", newPrice);
                     donutAddedListView.getItems().remove(name);
                     subTotalTextArea.setText(s);
-                    System.out.println("2 quan");
                 }else if(newDonut.quantityOfDonut == 3){
                     double newPrice = overallDonutOrderPrice - (newDonut.getItemPrice()*3);
                     overallDonutOrderPrice -= (newDonut.getItemPrice()*3);
                     String s = String.format("%.02f", newPrice);
                     donutAddedListView.getItems().remove(name);
                     subTotalTextArea.setText(s);
-                    System.out.println("3 quan");
                 }
         }
         if(donutAddedListView.getItems().isEmpty()){
