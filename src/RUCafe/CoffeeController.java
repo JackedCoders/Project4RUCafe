@@ -18,7 +18,7 @@ import java.util.ResourceBundle;
  *
  * @author Manveer Singh, Prasidh Sriram
  */
-public class OrderingCoffeeController {
+public class CoffeeController {
 
     @FXML
     private CheckBox Milk, Syrup, Caramel, Cream, WhippedCream;

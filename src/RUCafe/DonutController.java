@@ -17,12 +17,12 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 /**
- * Controller class for our donut GUI (OrderingDonutsView.fxml) which performs several different actions like
+ * Controller class for our donut GUI (DonutView.fxml) which performs several different actions like
  * initializing donut types, donut flavors, adding specific donuts to the order and removing selected based on user
  * preference along with displaying the correct overall price of the order and a toString method to allow for export
  * @author Manveer Singh, Prasidh Sriram
  */
-public class OrderingDonutsController implements Initializable {
+public class DonutController implements Initializable {
 
     @FXML
     private ListView<String> donutFlavorListView, donutAddedListView;
@@ -36,7 +36,7 @@ public class OrderingDonutsController implements Initializable {
     @FXML
     private ComboBox<String> typeOfDonut;
 
-    private MainMenuController mainController;
+    private Order orderOBJ;
     double overallDonutOrderPrice =0;
     private int yeastDonut = 0;
     private int cakeDonut = 1;
@@ -55,6 +55,10 @@ public class OrderingDonutsController implements Initializable {
         ObservableList<String> typeOfDonutList = FXCollections.observableArrayList("Yeast Donut" , "Cake Donut" , "Donut Hole");
         typeOfDonut.setItems(typeOfDonutList);
         subTotalTextArea.setText("0.00");
+    }
+
+    public void setOrderController(Order order){
+        orderOBJ = order;
     }
 
 
@@ -199,6 +203,10 @@ public class OrderingDonutsController implements Initializable {
         }
     }
 
+    /**
+     *
+     * @param event
+     */
     @FXML
     public void addDonutOrder(ActionEvent event){
 

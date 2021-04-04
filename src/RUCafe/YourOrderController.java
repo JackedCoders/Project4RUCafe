@@ -8,7 +8,7 @@ import javafx.scene.control.*;
  *
  * @author Manveer Singh, Prasidh Sriram
  */
-public class YourOrderDetailController {
+public class YourOrderController {
 
     @FXML
     private TextArea subTotalCurrentOrder, salesTaxCurrentOrder, totalCurrentOrder;

@@ -18,24 +18,25 @@ import java.io.IOException;
  * @author Manveer Singh, Prasidh Sriram
  */
 public class MainMenuController{
-    OrderingCoffeeController addInfoCoffee;
+    CoffeeController addInfoCoffee;
     StoreOrdersController addInfoStores;
-    YourOrderDetailController addCurrentOrderInfo;
-    OrderingDonutsController addInfoDonut;
+    YourOrderController addCurrentOrderInfo;
+    DonutController addInfoDonut;
+    private Order order = new Order();
 
     @FXML
     private Button OrderDonutsButton, OrderCoffeeButton, ViewStoreOrdersButton, ViewYourOrderButton;
 
 
     /**
-     * FXML method that loads the Coffee ordering GUI (OrderingCoffeeView.fxml) and sets the stage so
+     * FXML method that loads the Coffee ordering GUI (CoffeeView.fxml) and sets the stage so
      * the user can directly order coffee
      * @param event
      * @throws IOException
      */
     @FXML
     private void openCoffeeOrdering(ActionEvent event) throws IOException{
-        Parent root_parent = FXMLLoader.load(getClass().getResource("OrderingCoffeeView.fxml"));
+        Parent root_parent = FXMLLoader.load(getClass().getResource("CoffeeView.fxml"));
         Scene root_scene = new Scene(root_parent,600, 450);
         Stage root_stage = new Stage();
         root_stage.initModality(Modality.WINDOW_MODAL);
@@ -54,7 +55,8 @@ public class MainMenuController{
      */
     @FXML
     private void openDonutOrdering(ActionEvent event) throws IOException{
-        Parent root_parent = FXMLLoader.load(getClass().getResource("OrderingDonutsView.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("DonutView.fxml"));
+        Parent root_parent = (Parent) fxmlLoader.load();
         Scene root_scene = new Scene(root_parent,600, 450);
         Stage root_stage = new Stage();
         root_stage.initModality(Modality.WINDOW_MODAL);
@@ -63,6 +65,9 @@ public class MainMenuController{
         root_stage.setScene(root_scene);
         root_stage.setTitle("Order Donut here!!");
         root_stage.show();
+
+        DonutController donutsController = fxmlLoader.getController();
+        donutsController.setOrderController(this.order);
     }
 
     /**
@@ -85,14 +90,14 @@ public class MainMenuController{
     }
 
     /**
-     * FXML method that loads the current order details (YourOrderDetailView.fxml) and sets the stage so
+     * FXML method that loads the current order details (YourOrderView.fxml) and sets the stage so
      * we can view the current orders being placed by the user
      * @param event
      * @throws IOException
      */
     @FXML
     private void viewYourCurrentOrder(ActionEvent event) throws IOException{
-        Parent root_parent = FXMLLoader.load(getClass().getResource("YourOrderDetailView.fxml"));
+        Parent root_parent = FXMLLoader.load(getClass().getResource("YourOrderView.fxml"));
         Scene root_scene = new Scene(root_parent,600, 450);
         Stage root_stage = new Stage();
         root_stage.initModality(Modality.WINDOW_MODAL);
