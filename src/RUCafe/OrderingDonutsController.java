@@ -54,6 +54,7 @@ public class OrderingDonutsController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle){
         ObservableList<String> typeOfDonutList = FXCollections.observableArrayList("Yeast Donut" , "Cake Donut" , "Donut Hole");
         typeOfDonut.setItems(typeOfDonutList);
+        subTotalTextArea.setText("0.00");
     }
 
 
@@ -100,13 +101,14 @@ public class OrderingDonutsController implements Initializable {
             showErrorNull.setTitle("Try again");
             showErrorNull.showAndWait();
         }else{
-            donutAddedListView.getItems().remove(name);
-            String s = String.format("%.02f", newDonut.getItemPrice());
-            subTotalTextArea.setText(String.valueOf(s));
+                double newPrice = overallDonutOrderPrice - newDonut.getItemPrice();
+                String s = String.format("%.02f", newPrice);
+                donutAddedListView.getItems().remove(name);
+                subTotalTextArea.setText(s);
         }
 
         if(donutAddedListView.getItems().isEmpty()){
-            subTotalTextArea.clear();
+            subTotalTextArea.setText("0.00");
             overallDonutOrderPrice = 0;
         }
     }
@@ -118,6 +120,7 @@ public class OrderingDonutsController implements Initializable {
     @FXML
     void addOneDonutToOrder(ActionEvent event){
         String nameOfDonut = donutFlavorListView.getSelectionModel().getSelectedItem();
+        String getSelection = typeOfDonut.getSelectionModel().getSelectedItem().toString();
         if(nameOfDonut == null){
             //throw null errors here I think
             Alert showErrorNull = new Alert(Alert.AlertType.WARNING);
@@ -129,7 +132,7 @@ public class OrderingDonutsController implements Initializable {
             overallDonutOrderPrice += newDonut.getItemPrice();
             String s = String.format("%.02f", overallDonutOrderPrice);
             subTotalTextArea.setText(String.valueOf(s));
-            donutAddedListView.getItems().add(nameOfDonut + "[1]");
+            donutAddedListView.getItems().add( getSelection + ", " + nameOfDonut + " [1]");
             addToOrder.setDisable(false);
         }
     }
@@ -140,8 +143,9 @@ public class OrderingDonutsController implements Initializable {
      */
     @FXML
     void addOTwoDonutToOrder(ActionEvent event){
+        String getSelection = typeOfDonut.getSelectionModel().getSelectedItem().toString();
         String nameOfDonut = donutFlavorListView.getSelectionModel().getSelectedItem();
-        if(nameOfDonut.equals(null)){
+        if(nameOfDonut == null){
             //throw null errors here I think
             Alert showErrorNull = new Alert(Alert.AlertType.WARNING);
             showErrorNull.setContentText("Donut selection & flavor is required before quantity can be chosen");
@@ -152,7 +156,7 @@ public class OrderingDonutsController implements Initializable {
             overallDonutOrderPrice += (2*newDonut.getItemPrice());
             String s = String.format("%.02f", overallDonutOrderPrice);
             subTotalTextArea.setText(String.valueOf(s));
-            donutAddedListView.getItems().add(nameOfDonut + "[2]");
+            donutAddedListView.getItems().add( getSelection + ", " + nameOfDonut + " [2]");
             addToOrder.setDisable(false);
         }
     }
@@ -164,7 +168,8 @@ public class OrderingDonutsController implements Initializable {
     @FXML
     void addOThreeDonutToOrder(ActionEvent event){
         String nameOfDonut = donutFlavorListView.getSelectionModel().getSelectedItem();
-        if(nameOfDonut.equals(null)){
+        String getSelection = typeOfDonut.getSelectionModel().getSelectedItem().toString();
+        if(nameOfDonut == null){
             //throw null errors here I think
             Alert showErrorNull = new Alert(Alert.AlertType.WARNING);
             showErrorNull.setContentText("Donut selection & flavor is required before quantity can be chosen");
@@ -175,7 +180,7 @@ public class OrderingDonutsController implements Initializable {
             overallDonutOrderPrice += (3*newDonut.getItemPrice());
             String s = String.format("%.02f", overallDonutOrderPrice);
             subTotalTextArea.setText(String.valueOf(s));
-            donutAddedListView.getItems().add(nameOfDonut + "[3]");
+            donutAddedListView.getItems().add( getSelection + ", " + nameOfDonut + " [3]");
             addToOrder.setDisable(false);
         }
     }

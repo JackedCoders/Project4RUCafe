@@ -19,8 +19,8 @@
       <Button fx:id="addToOrder" layoutX="279.0" layoutY="348.0" mnemonicParsing="false" text="Add to Order" />
       <Label layoutX="33.0" layoutY="352.0" text="Sub-Total:" />
       <Button fx:id="removeSelectedDonut" layoutX="417.0" layoutY="323.0" mnemonicParsing="false" onMouseClicked="#removeSelectedDonutRightListView" text="Remove Selected Donut" />
-      <ListView fx:id="donutAddedListView" layoutX="401.0" layoutY="146.0" prefHeight="171.0" prefWidth="174.0" />
-      <ListView fx:id="donutFlavorListView" layoutX="28.0" layoutY="146.0" prefHeight="171.0" prefWidth="174.0" />
+      <ListView fx:id="donutAddedListView" layoutX="388.0" layoutY="146.0" prefHeight="171.0" prefWidth="193.0" />
+      <ListView fx:id="donutFlavorListView" layoutX="28.0" layoutY="146.0" prefHeight="171.0" prefWidth="187.0" />
       <ComboBox fx:id="typeOfDonut" layoutX="226.0" layoutY="164.0" onAction="#fillListViewLeft" prefWidth="150.0" promptText="Type Of Donut" />
       <TextArea fx:id="subTotalTextArea" layoutX="100.0" layoutY="342.0" prefHeight="38.0" prefWidth="158.0" />
       <Label layoutX="28.0" layoutY="41.0" text="First, Select the type of donut desired using the drop down list" />
