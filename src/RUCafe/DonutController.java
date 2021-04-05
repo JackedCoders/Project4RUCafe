@@ -116,20 +116,21 @@ public class DonutController implements Initializable {
                     String s = String.format("%.02f", overallDonutOrderPrice);
                     donutAddedListView.getItems().remove(name);
                     subTotalTextArea.setText(s);
-                    System.out.println(donutQuantity + "" + typeOfDonut);
                 }else if(typeOfDonut.equals("Cake Donut")){
                     overallDonutOrderPrice -= Donut.CAKE_DONUT_PRICE*donutQuantity;
                     String s = String.format("%.02f", overallDonutOrderPrice);
                     donutAddedListView.getItems().remove(name);
                     subTotalTextArea.setText(s);
-                    System.out.println(donutQuantity + "" + typeOfDonut);
-            } else if(typeOfDonut.equals("Donut Hole")){
+                }else if(typeOfDonut.equals("Donut Hole")){
                     overallDonutOrderPrice -= Donut.DONUT_HOLE_PRICE*donutQuantity;
                     String s = String.format("%.02f", overallDonutOrderPrice);
                     donutAddedListView.getItems().remove(name);
                     subTotalTextArea.setText(s);
-                    System.out.println(donutQuantity + "" + typeOfDonut);
-            }
+                }
+        }
+        if(donutAddedListView.getItems().isEmpty()){
+            subTotalTextArea.setText("0.00");
+            overallDonutOrderPrice = 0;
         }
     }
 
