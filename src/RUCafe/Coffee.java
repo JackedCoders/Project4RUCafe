@@ -14,13 +14,17 @@ public class Coffee extends MenuItem implements Customizable{
     final double GRANDE_COFFEE_PRICE = 2.99;
     final double VENTI_COFFEE_PRICE = 3.49;
 
-    int quantityKeepTrack;
-    int shortCoffee =0;
-    int tallCoffee =1;
-    int grandeCoffee =2;
-    int ventiCoffee =3;
+    public int quantityKeepTrack;
+    public static final int SHORT_COFFEE = 0;
+    public static final int TALL_COFFEE = 1;
+    public static final int GRANDE_COFFEE = 2;
+    public static final int VENTI_COFFEE = 3;
     ArrayList<String> addIn = new ArrayList<>();
 
+    /**
+     *
+     * @param sizeOfCoffee
+     */
     public Coffee(int sizeOfCoffee){
         if(sizeOfCoffee ==0){
             super.itemPrice = SHORT_COFFEE_PRICE;

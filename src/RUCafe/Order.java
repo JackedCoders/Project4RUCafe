@@ -7,7 +7,6 @@ public class Order implements Customizable{
 
     private int order_ID; //Unique number assigned to each order
     private MenuItem [] itemList;
-
     public int getOrder_ID(){
         return order_ID;
     }

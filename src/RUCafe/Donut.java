@@ -10,8 +10,24 @@ public class Donut extends MenuItem implements Customizable{
     final static double DONUT_HOLE_PRICE = 0.33;
 
     private int donutType; //0==yeast, 1==cake, 2==donut hole
-    int quantityOfDonut;
+    private int quantityOfDonut;
     String donutName;
+
+    /**
+     *
+     * @param quantityOfDonut
+     */
+    public void setQuantityOfDonut(int quantityOfDonut) {
+        this.quantityOfDonut = quantityOfDonut;
+    }
+
+    /**
+     *
+     * @return
+     */
+    public int getQuantityOfDonut() {
+        return quantityOfDonut;
+    }
 
     /**
      *

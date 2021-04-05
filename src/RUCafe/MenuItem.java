@@ -10,6 +10,10 @@ public class MenuItem {
 
     protected double itemPrice;
 
+    /**
+     *
+     * @param itemPrice
+     */
     public void itemPrice(double itemPrice){
         this.itemPrice = itemPrice;
     }

@@ -43,7 +43,6 @@ public class DonutController implements Initializable {
     private int donutHole = 2;
     Donut newDonut = new Donut(yeastDonut);
     Order newOrder = new Order();
-    Alert neAlert = new Alert(Alert.AlertType.WARNING);
 
     /**
      * This method populates the comboboxes with the type of donuts and the amount a user wants in that order to be added to the cart
@@ -58,6 +57,10 @@ public class DonutController implements Initializable {
         subTotalTextArea.setText("0.00");
     }
 
+    /**
+     *
+     * @param order
+     */
     public void setOrderController(Order order){
         orderOBJ = order;
     }
@@ -107,7 +110,7 @@ public class DonutController implements Initializable {
             showErrorNull.showAndWait();
         }else{
                 String typeOfDonut = name.substring(0,name.indexOf(","));
-                int donutQuantity = Integer.parseInt(name.substring(name.indexOf("[") +1, name.indexOf("]")));
+                int donutQuantity = Integer.parseInt(name.substring(name.indexOf("[") + 1, name.indexOf("]")));
                 if(typeOfDonut.equals("Yeast Donut")){
                     overallDonutOrderPrice -= Donut.YEAST_DONUT_PRICE*donutQuantity;
                     String s = String.format("%.02f", overallDonutOrderPrice);
@@ -128,7 +131,6 @@ public class DonutController implements Initializable {
                     System.out.println(donutQuantity + "" + typeOfDonut);
             }
         }
-
     }
 
     /**
@@ -146,7 +148,7 @@ public class DonutController implements Initializable {
             showErrorNull.setTitle("Choose donut first & Try Again");
             showErrorNull.showAndWait();
         }else{
-            newDonut.quantityOfDonut = 1;
+            newDonut.setQuantityOfDonut(1);
             overallDonutOrderPrice += newDonut.getItemPrice();
             String s = String.format("%.02f", overallDonutOrderPrice);
             subTotalTextArea.setText(String.valueOf(s));
@@ -170,7 +172,7 @@ public class DonutController implements Initializable {
             showErrorNull.setTitle("Choose donut first & Try Again");
             showErrorNull.showAndWait();
         }else{
-            newDonut.quantityOfDonut = 2;
+            newDonut.setQuantityOfDonut(2);
             overallDonutOrderPrice += (2*newDonut.getItemPrice());
             String s = String.format("%.02f", overallDonutOrderPrice);
             subTotalTextArea.setText(String.valueOf(s));
@@ -194,7 +196,7 @@ public class DonutController implements Initializable {
             showErrorNull.setTitle("Choose donut first & Try Again");
             showErrorNull.showAndWait();
         }else{
-            newDonut.quantityOfDonut = 3;
+            newDonut.setQuantityOfDonut(3);
             overallDonutOrderPrice += (3*newDonut.getItemPrice());
             String s = String.format("%.02f", overallDonutOrderPrice);
             subTotalTextArea.setText(String.valueOf(s));
@@ -213,7 +215,6 @@ public class DonutController implements Initializable {
         for(String s: listOfDonutOrders){
             orderOBJ.add(s);
         }
-
     }
 
 
