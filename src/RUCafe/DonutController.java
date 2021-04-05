@@ -44,6 +44,7 @@ public class DonutController implements Initializable {
     Donut newDonut = new Donut(yeastDonut);
     Order newOrder = new Order();
     Alert neAlert = new Alert(Alert.AlertType.WARNING);
+
     /**
      * This method populates the comboboxes with the type of donuts and the amount a user wants in that order to be added to the cart
      * using observableLists of type string. automatically populates upon running the GUI
@@ -105,30 +106,29 @@ public class DonutController implements Initializable {
             showErrorNull.setTitle("Try again");
             showErrorNull.showAndWait();
         }else{
-                if(newDonut.quantityOfDonut == 1){
-                    double newPrice = overallDonutOrderPrice - newDonut.getItemPrice();
-                   overallDonutOrderPrice -= newDonut.getItemPrice();
-                    String s = String.format("%.02f", newPrice);
+                String typeOfDonut = name.substring(0,name.indexOf(","));
+                int donutQuantity = Integer.parseInt(name.substring(name.indexOf("[") +1, name.indexOf("]")));
+                if(typeOfDonut.equals("Yeast Donut")){
+                    overallDonutOrderPrice -= Donut.YEAST_DONUT_PRICE*donutQuantity;
+                    String s = String.format("%.02f", overallDonutOrderPrice);
                     donutAddedListView.getItems().remove(name);
                     subTotalTextArea.setText(s);
-                }else if (newDonut.quantityOfDonut == 2){
-                    double newPrice = overallDonutOrderPrice -(newDonut.getItemPrice()*2);
-                   overallDonutOrderPrice -= (newDonut.getItemPrice()*2);
-                    String s = String.format("%.02f", newPrice);
+                    System.out.println(donutQuantity + "" + typeOfDonut);
+                }else if(typeOfDonut.equals("Cake Donut")){
+                    overallDonutOrderPrice -= Donut.CAKE_DONUT_PRICE*donutQuantity;
+                    String s = String.format("%.02f", overallDonutOrderPrice);
                     donutAddedListView.getItems().remove(name);
                     subTotalTextArea.setText(s);
-                }else if(newDonut.quantityOfDonut == 3){
-                    double newPrice = overallDonutOrderPrice - (newDonut.getItemPrice()*3);
-                    overallDonutOrderPrice -= (newDonut.getItemPrice()*3);
-                    String s = String.format("%.02f", newPrice);
+                    System.out.println(donutQuantity + "" + typeOfDonut);
+            } else if(typeOfDonut.equals("Donut Hole")){
+                    overallDonutOrderPrice -= Donut.DONUT_HOLE_PRICE*donutQuantity;
+                    String s = String.format("%.02f", overallDonutOrderPrice);
                     donutAddedListView.getItems().remove(name);
                     subTotalTextArea.setText(s);
-                }
+                    System.out.println(donutQuantity + "" + typeOfDonut);
+            }
         }
-        if(donutAddedListView.getItems().isEmpty()){
-            subTotalTextArea.setText("0.00");
-            overallDonutOrderPrice = 0;
-        }
+
     }
 
     /**
@@ -209,7 +209,10 @@ public class DonutController implements Initializable {
      */
     @FXML
     public void addDonutOrder(ActionEvent event){
-
+        ObservableList<String> listOfDonutOrders = donutAddedListView.getItems();
+        for(String s: listOfDonutOrders){
+            orderOBJ.add(s);
+        }
 
     }
 

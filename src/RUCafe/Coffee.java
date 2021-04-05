@@ -1,5 +1,7 @@
 package RUCafe;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Manveer Singh, Prasidh Sriram
@@ -12,45 +14,22 @@ public class Coffee extends MenuItem implements Customizable{
     final double GRANDE_COFFEE_PRICE = 2.99;
     final double VENTI_COFFEE_PRICE = 3.49;
 
-    private int coffeeSize; //0 == short, 1 == tall, 2 ==grande, 3 == venti
-    private int numAddIns = 0;
+    int quantityKeepTrack;
+    int shortCoffee =0;
+    int tallCoffee =1;
+    int grandeCoffee =2;
+    int ventiCoffee =3;
+    ArrayList<String> addIn = new ArrayList<>();
 
-    public Coffee(){
-
-    }
-
-    public Coffee(int coffeeSize){
-        this.coffeeSize = coffeeSize;
-    }
-
-    /**
-     *
-     */
-    public void addTopping(){
-        numAddIns++;
-    }
-
-    /**
-     *
-     */
-    public void removeTopping(){
-        numAddIns--;
-    }
-
-
-    /**
-     *
-     * @return
-     */
-    public void itemPrice(){
-        if(coffeeSize == 0){
-            super.itemPrice(COST_PER_ADDIN*numAddIns + SHORT_COFFEE_PRICE);
-        }if(coffeeSize == 1){
-            super.itemPrice(COST_PER_ADDIN*numAddIns + TALL_COFFEE_PRICE);
-        }if(coffeeSize == 2){
-            super.itemPrice(COST_PER_ADDIN*numAddIns + GRANDE_COFFEE_PRICE);
-        }if(coffeeSize == 3){
-            super.itemPrice(COST_PER_ADDIN*numAddIns + VENTI_COFFEE_PRICE);
+    public Coffee(int sizeOfCoffee){
+        if(sizeOfCoffee ==0){
+            super.itemPrice = SHORT_COFFEE_PRICE;
+        }else if(sizeOfCoffee ==1){
+            super.itemPrice = TALL_COFFEE_PRICE;
+        }else if(sizeOfCoffee ==2){
+            super.itemPrice = GRANDE_COFFEE_PRICE;
+        }else if(sizeOfCoffee ==3){
+            super.itemPrice = VENTI_COFFEE_PRICE;
         }
     }
 
@@ -58,7 +37,8 @@ public class Coffee extends MenuItem implements Customizable{
      *
      * @return
      */
-    public double getPrice(){
+    @Override
+    public double getItemPrice(){
         return super.getItemPrice();
     }
 
@@ -67,8 +47,8 @@ public class Coffee extends MenuItem implements Customizable{
      * @param obj
      * @return
      */
-    @Override
-    public boolean add(Object obj) {
+    public boolean add(Object obj){
+        super.itemPrice  = itemPrice + COST_PER_ADDIN;
         return false;
     }
 
@@ -77,8 +57,8 @@ public class Coffee extends MenuItem implements Customizable{
      * @param obj
      * @return
      */
-    @Override
-    public boolean remove(Object obj) {
+    public boolean remove(Object obj){
+        super.itemPrice = itemPrice - COST_PER_ADDIN;
         return false;
     }
 }
