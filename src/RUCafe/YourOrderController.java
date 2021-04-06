@@ -13,6 +13,7 @@ import javax.swing.*;
  */
 public class YourOrderController {
 
+    
     @FXML
     private TextArea subTotalCurrentOrder, salesTaxCurrentOrder, totalCurrentOrder;
 
