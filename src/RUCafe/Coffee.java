@@ -14,26 +14,31 @@ public class Coffee extends MenuItem implements Customizable{
     final double GRANDE_COFFEE_PRICE = 2.99;
     final double VENTI_COFFEE_PRICE = 3.49;
 
-    public int quantityKeepTrack;
+    public static int quantityKeepTrack; //to be able to set it in other controllers and display in toString
     public static final int SHORT_COFFEE = 0;
     public static final int TALL_COFFEE = 1;
     public static final int GRANDE_COFFEE = 2;
     public static final int VENTI_COFFEE = 3;
     ArrayList<String> addIn = new ArrayList<>();
+    String nameOfSize;
 
     /**
      *
      * @param sizeOfCoffee
      */
     public Coffee(int sizeOfCoffee){
-        if(sizeOfCoffee ==0){
+        if(sizeOfCoffee == SHORT_COFFEE){
             super.itemPrice = SHORT_COFFEE_PRICE;
-        }else if(sizeOfCoffee ==1){
+            this.nameOfSize = "Short Size";
+        }else if(sizeOfCoffee ==TALL_COFFEE){
             super.itemPrice = TALL_COFFEE_PRICE;
-        }else if(sizeOfCoffee ==2){
+            this.nameOfSize= "Tall Size";
+        }else if(sizeOfCoffee ==GRANDE_COFFEE){
             super.itemPrice = GRANDE_COFFEE_PRICE;
-        }else if(sizeOfCoffee ==3){
+            this.nameOfSize = "Grande Size";
+        }else if(sizeOfCoffee == VENTI_COFFEE){
             super.itemPrice = VENTI_COFFEE_PRICE;
+            this.nameOfSize = "Venti Size";
         }
     }
 
@@ -41,8 +46,7 @@ public class Coffee extends MenuItem implements Customizable{
      *
      * @return
      */
-    @Override
-    public double getItemPrice(){
+    public double itemPrice(){
         return super.getItemPrice();
     }
 
@@ -52,10 +56,24 @@ public class Coffee extends MenuItem implements Customizable{
      * @return
      */
     public boolean add(Object obj){
-        super.itemPrice  = itemPrice + COST_PER_ADDIN;
+        super.itemPrice = itemPrice + COST_PER_ADDIN;
         return false;
     }
 
+    /**
+     *
+     * @return
+     */
+    public String toString(){
+        String coffeeOrder = super.toString();
+        coffeeOrder += "Size Of Coffee" + this.nameOfSize + ": Selected Addons ->";
+        for(int i =0; i<this.addIn.size(); i++){
+            coffeeOrder += addIn.get(i) + ", ";
+        }
+        String s = String.format("%.02f", this.itemPrice);
+        coffeeOrder += "Price: " + s + ", " + "Quantity: " + this.quantityKeepTrack;
+        return coffeeOrder;
+    }
     /**
      *
      * @param obj

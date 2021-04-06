@@ -7,10 +7,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
-import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextArea;
 
-import javax.swing.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -34,7 +32,6 @@ public class CoffeeController implements Initializable {
 
     @FXML
     private ComboBox<Integer> quantityOfCoffee;
-
 
     Coffee newCoffee = new Coffee(0);
     Order newOrder = new Order();
@@ -73,12 +70,12 @@ public class CoffeeController implements Initializable {
         if(Milk.isSelected()){
             newCoffee.add(Milk);
             newCoffee.addIn.add("Milk");
-            String s = String.format("%.02f", newCoffee.getItemPrice());
+            String s = String.format("%.02f", newCoffee.itemPrice());
             subtotalAreaTextArea.setText(String.valueOf(s));
         }else{
             newCoffee.remove(Milk);
             newCoffee.addIn.remove("Milk");
-            String s = String.format("%.02f", newCoffee.getItemPrice());
+            String s = String.format("%.02f", newCoffee.itemPrice());
             subtotalAreaTextArea.setText(String.valueOf(s));
         }
     }
@@ -92,13 +89,13 @@ public class CoffeeController implements Initializable {
         if(Syrup.isSelected()){
             newCoffee.add(Syrup);
             newCoffee.addIn.add("Syrup");
-            String s = String.format("%.02f", newCoffee.getItemPrice());
+            String s = String.format("%.02f", newCoffee.itemPrice());
             subtotalAreaTextArea.setText(String.valueOf(s));
 
         }else{
             newCoffee.remove(Syrup);
             newCoffee.addIn.remove("Syrup");
-            String s = String.format("%.02f", newCoffee.getItemPrice());
+            String s = String.format("%.02f", newCoffee.itemPrice());
             subtotalAreaTextArea.setText(String.valueOf(s));
         }
     }
@@ -112,12 +109,12 @@ public class CoffeeController implements Initializable {
         if(Caramel.isSelected()){
             newCoffee.add(Caramel);
             newCoffee.addIn.add("Caramel");
-            String s = String.format("%.02f", newCoffee.getItemPrice());
+            String s = String.format("%.02f", newCoffee.itemPrice());
             subtotalAreaTextArea.setText(String.valueOf(s));
         }else{
             newCoffee.remove(Caramel);
             newCoffee.addIn.remove("Caramel");
-            String s = String.format("%.02f", newCoffee.getItemPrice());
+            String s = String.format("%.02f", newCoffee.itemPrice());
             subtotalAreaTextArea.setText(String.valueOf(s));
         }
     }
@@ -131,12 +128,12 @@ public class CoffeeController implements Initializable {
         if(Cream.isSelected()){
             newCoffee.add(Cream);
             newCoffee.addIn.add("Cream");
-            String s = String.format("%.02f", newCoffee.getItemPrice());
+            String s = String.format("%.02f", newCoffee.itemPrice());
             subtotalAreaTextArea.setText(String.valueOf(s));
         }else{
             newCoffee.remove(Cream);
             newCoffee.addIn.remove("Cream");
-            String s = String.format("%.02f", newCoffee.getItemPrice());
+            String s = String.format("%.02f", newCoffee.itemPrice());
             subtotalAreaTextArea.setText(String.valueOf(s));
         }
     }
@@ -150,12 +147,12 @@ public class CoffeeController implements Initializable {
         if(WhippedCream.isSelected()){
             newCoffee.add(WhippedCream);
             newCoffee.addIn.add("Whipped Cream");
-            String s = String.format("%.02f", newCoffee.getItemPrice());
+            String s = String.format("%.02f", newCoffee.itemPrice());
             subtotalAreaTextArea.setText(String.valueOf(s));
         }else{
             newCoffee.remove(WhippedCream);
             newCoffee.addIn.remove("Whipped Cream");
-            String s = String.format("%.02f", newCoffee.getItemPrice());
+            String s = String.format("%.02f", newCoffee.itemPrice());
             subtotalAreaTextArea.setText(String.valueOf(s));
         }
     }
@@ -169,7 +166,7 @@ public class CoffeeController implements Initializable {
         String getSelection = coffeeSize.getSelectionModel().getSelectedItem().toString();
         if(getSelection.equals("Short")){
             newCoffee = new Coffee(0);
-            String s = String.format("%.02f", newCoffee.getItemPrice());
+            String s = String.format("%.02f", newCoffee.itemPrice());
             subtotalAreaTextArea.setText(String.valueOf(s));
             Milk.setDisable(false);
             Milk.setSelected(false);
@@ -183,7 +180,7 @@ public class CoffeeController implements Initializable {
             WhippedCream.setSelected(false);
         }else if(getSelection.equals("Tall")){
             newCoffee = new Coffee(1);
-            String s = String.format("%.02f", newCoffee.getItemPrice());
+            String s = String.format("%.02f", newCoffee.itemPrice());
             subtotalAreaTextArea.setText(String.valueOf(s));
             Milk.setDisable(false);
             Milk.setSelected(false);
@@ -197,7 +194,7 @@ public class CoffeeController implements Initializable {
             WhippedCream.setSelected(false);
         }else if(getSelection.equals("Grande")){
             newCoffee = new Coffee(2);
-            String s = String.format("%.02f", newCoffee.getItemPrice());
+            String s = String.format("%.02f", newCoffee.itemPrice());
             subtotalAreaTextArea.setText(String.valueOf(s));
             Milk.setDisable(false);
             Milk.setSelected(false);
@@ -211,7 +208,7 @@ public class CoffeeController implements Initializable {
             WhippedCream.setSelected(false);
         }else if(getSelection.equals("Venti")){
             newCoffee = new Coffee(3);
-            String s = String.format("%.02f", newCoffee.getItemPrice());
+            String s = String.format("%.02f", newCoffee.itemPrice());
             subtotalAreaTextArea.setText(String.valueOf(s));
             Milk.setDisable(false);
             Milk.setSelected(false);
@@ -234,9 +231,9 @@ public class CoffeeController implements Initializable {
     void quantityCalculation(ActionEvent event){
         String getSelectionQuantity = quantityOfCoffee.getSelectionModel().getSelectedItem().toString();
        if(getSelectionQuantity.equals("1")){
-            newCoffee.quantityKeepTrack =1;
-            String s = String.format("%.02f", newCoffee.getItemPrice());
+            String s = String.format("%.02f", newCoffee.itemPrice());
             subtotalAreaTextArea.setText(String.valueOf(s));
+            newCoffee.quantityKeepTrack =1;
             Milk.setDisable(true);
             Syrup.setDisable(true);
             Caramel.setDisable(true);
@@ -244,9 +241,9 @@ public class CoffeeController implements Initializable {
             WhippedCream.setDisable(true);
             coffeeSize.setDisable(true);
         }else if(getSelectionQuantity.equals("2")){
-           newCoffee.quantityKeepTrack =2;
-           String s = String.format("%.02f", (newCoffee.getItemPrice()*2));
+           String s = String.format("%.02f", (newCoffee.itemPrice()*2));
            subtotalAreaTextArea.setText(String.valueOf(s));
+           newCoffee.quantityKeepTrack =2;
            Milk.setDisable(true);
            Syrup.setDisable(true);
            Caramel.setDisable(true);
@@ -254,9 +251,9 @@ public class CoffeeController implements Initializable {
            WhippedCream.setDisable(true);
            coffeeSize.setDisable(true);
         }else if(getSelectionQuantity.equals("3")){
-           newCoffee.quantityKeepTrack =3;
-           String s = String.format("%.02f", (newCoffee.getItemPrice()*3));
+           String s = String.format("%.02f", (newCoffee.itemPrice()*3));
            subtotalAreaTextArea.setText(String.valueOf(s));
+           newCoffee.quantityKeepTrack =3;
            Milk.setDisable(true);
            Syrup.setDisable(true);
            Caramel.setDisable(true);
@@ -288,21 +285,30 @@ public class CoffeeController implements Initializable {
         String getSelection = coffeeSize.getSelectionModel().getSelectedItem().toString();
         if(getSelection.equals("Short")){
             newCoffee.itemPrice = newCoffee.SHORT_COFFEE_PRICE;
-            String s = String.format("%.02f", newCoffee.getItemPrice());
+            String s = String.format("%.02f", newCoffee.itemPrice());
             subtotalAreaTextArea.setText(String.valueOf(s));
         }else if(getSelection.equals("Tall")){
             newCoffee.itemPrice = newCoffee.TALL_COFFEE_PRICE;
-            String s = String.format("%.02f", newCoffee.getItemPrice());
+            String s = String.format("%.02f", newCoffee.itemPrice());
             subtotalAreaTextArea.setText(String.valueOf(s));
         }else if(getSelection.equals("Grande")){
             newCoffee.itemPrice = newCoffee.GRANDE_COFFEE_PRICE;
-            String s = String.format("%.02f", newCoffee.getItemPrice());
+            String s = String.format("%.02f", newCoffee.itemPrice());
             subtotalAreaTextArea.setText(String.valueOf(s));
         }else if(getSelection.equals("Venti")){
             newCoffee.itemPrice = newCoffee.VENTI_COFFEE_PRICE;
-            String s = String.format("%.02f", newCoffee.getItemPrice());
+            String s = String.format("%.02f", newCoffee.itemPrice());
             subtotalAreaTextArea.setText(String.valueOf(s));
         }
+    }
+
+    /**
+     *
+     * @param event
+     */
+    @FXML
+    void addToOrderCoffee(ActionEvent event){
+
     }
 
 

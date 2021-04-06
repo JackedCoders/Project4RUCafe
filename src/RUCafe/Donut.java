@@ -49,24 +49,10 @@ public class Donut extends MenuItem implements Customizable{
      *
      * @return
      */
-    public double getItemPrice(){
+    public double itemPrice(){
         return super.getItemPrice();
     }
 
-
-    /**
-     *
-     * @return
-     */
-    public void itemPrice(){
-        if(donutType == 0){
-            itemPrice = YEAST_DONUT_PRICE;
-        }if(donutType == 1){
-            itemPrice = CAKE_DONUT_PRICE;
-        }if(donutType == 2){
-            itemPrice = DONUT_HOLE_PRICE;
-        }
-    }
 
     /**
      *

@@ -4,15 +4,10 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.control.ComboBox;
-import javax.print.CancelablePrintJob;
-import javax.swing.*;
-import java.awt.event.MouseEvent;
-import java.io.IOException;
+
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -150,7 +145,7 @@ public class DonutController implements Initializable {
             showErrorNull.showAndWait();
         }else{
             newDonut.setQuantityOfDonut(1);
-            overallDonutOrderPrice += newDonut.getItemPrice();
+            overallDonutOrderPrice += newDonut.itemPrice();
             String s = String.format("%.02f", overallDonutOrderPrice);
             subTotalTextArea.setText(String.valueOf(s));
             donutAddedListView.getItems().add( getSelection + ", " + nameOfDonut + " [1]");
@@ -174,7 +169,7 @@ public class DonutController implements Initializable {
             showErrorNull.showAndWait();
         }else{
             newDonut.setQuantityOfDonut(2);
-            overallDonutOrderPrice += (2*newDonut.getItemPrice());
+            overallDonutOrderPrice += (2*newDonut.itemPrice());
             String s = String.format("%.02f", overallDonutOrderPrice);
             subTotalTextArea.setText(String.valueOf(s));
             donutAddedListView.getItems().add( getSelection + ", " + nameOfDonut + " [2]");
@@ -198,7 +193,7 @@ public class DonutController implements Initializable {
             showErrorNull.showAndWait();
         }else{
             newDonut.setQuantityOfDonut(3);
-            overallDonutOrderPrice += (3*newDonut.getItemPrice());
+            overallDonutOrderPrice += (3*newDonut.itemPrice());
             String s = String.format("%.02f", overallDonutOrderPrice);
             subTotalTextArea.setText(String.valueOf(s));
             donutAddedListView.getItems().add( getSelection + ", " + nameOfDonut + " [3]");

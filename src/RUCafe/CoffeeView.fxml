@@ -7,30 +7,29 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="RUCafe.CoffeeController">
    <children>
-      <Label layoutX="100.0" layoutY="110.0" text="Order Coffee" underline="true">
+      <Label layoutX="212.0" layoutY="29.0" text="Order Coffee" underline="true">
          <font>
             <Font size="25.0" />
          </font>
       </Label>
-      <ImageView fitHeight="96.0" fitWidth="192.0" layoutX="66.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="96.0" fitWidth="192.0" layoutX="40.0" layoutY="78.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@CoffeePicMainMenu.jpg" />
          </image>
       </ImageView>
-      <CheckBox fx:id="Cream" layoutX="176.0" layoutY="151.0" mnemonicParsing="false" onAction="#addToppingCream" text="Cream" />
-      <CheckBox fx:id="Milk" layoutX="98.0" layoutY="151.0" mnemonicParsing="false" onAction="#addToppingMilk" text="Milk" />
-      <CheckBox fx:id="WhippedCream" layoutX="175.0" layoutY="187.0" mnemonicParsing="false" onAction="#addToppingWhippedCream" text="Whipped Cream" />
-      <CheckBox fx:id="Syrup" layoutX="98.0" layoutY="187.0" mnemonicParsing="false" onAction="#addToppingSyrup" text="Syrup" />
-      <CheckBox fx:id="Caramel" layoutX="98.0" layoutY="226.0" mnemonicParsing="false" onAction="#addToppingCaramel" text="Caramel" />
-      <Button fx:id="addToOrder" layoutX="298.0" layoutY="224.0" mnemonicParsing="false" text="Add To Order" />
-      <TextArea fx:id="subtotalAreaTextArea" layoutX="184.0" layoutY="217.0" prefHeight="36.0" prefWidth="97.0" />
-      <ListView layoutX="93.0" layoutY="266.0" prefHeight="111.0" prefWidth="377.0" />
-      <ComboBox fx:id="coffeeSize" layoutX="304.0" layoutY="147.0" onAction="#sizesCalculation" prefWidth="150.0" promptText="Choose Coffee Size" />
-      <ComboBox fx:id="quantityOfCoffee" layoutX="304.0" layoutY="184.0" onAction="#quantityCalculation" prefWidth="150.0" promptText="Choose Quantity" />
-      <Button fx:id="resetEverything" layoutX="393.0" layoutY="224.0" mnemonicParsing="false" onAction="#resetEverythingGUI" text="Reset &amp; Try again" />
-      <Label layoutX="213.0" layoutY="14.0" text="Firstly, Choose Coffee Size" />
-      <Label layoutX="213.0" layoutY="39.0" text="Secondly, choose any or no addins " />
-      <Label layoutX="213.0" layoutY="62.0" text="Then, choose the quantity" />
-      <Label layoutX="214.0" layoutY="87.0" text="To reset, either choose another coffee size or click &quot;Reset &amp; Try again&quot;" />
+      <CheckBox fx:id="Cream" layoutX="176.0" layoutY="204.0" mnemonicParsing="false" onAction="#addToppingCream" text="Cream" />
+      <CheckBox fx:id="Milk" layoutX="98.0" layoutY="204.0" mnemonicParsing="false" onAction="#addToppingMilk" text="Milk" />
+      <CheckBox fx:id="WhippedCream" layoutX="175.0" layoutY="240.0" mnemonicParsing="false" onAction="#addToppingWhippedCream" text="Whipped Cream" />
+      <CheckBox fx:id="Syrup" layoutX="98.0" layoutY="240.0" mnemonicParsing="false" onAction="#addToppingSyrup" text="Syrup" />
+      <CheckBox fx:id="Caramel" layoutX="98.0" layoutY="279.0" mnemonicParsing="false" onAction="#addToppingCaramel" text="Caramel" />
+      <Button fx:id="addToOrder" layoutX="298.0" layoutY="277.0" mnemonicParsing="false" onAction="#addToOrderCoffee" text="Add To Order" />
+      <TextArea fx:id="subtotalAreaTextArea" layoutX="184.0" layoutY="270.0" prefHeight="36.0" prefWidth="97.0" />
+      <ComboBox fx:id="coffeeSize" layoutX="304.0" layoutY="200.0" onAction="#sizesCalculation" prefWidth="150.0" promptText="Choose Coffee Size" />
+      <ComboBox fx:id="quantityOfCoffee" layoutX="304.0" layoutY="237.0" onAction="#quantityCalculation" prefWidth="150.0" promptText="Choose Quantity" />
+      <Button fx:id="resetEverything" layoutX="393.0" layoutY="277.0" mnemonicParsing="false" onAction="#resetEverythingGUI" text="Reset &amp; Try again" />
+      <Label layoutX="183.0" layoutY="81.0" text="Firstly, Choose Coffee Size" />
+      <Label layoutX="183.0" layoutY="106.0" text="Secondly, choose any or no addins " />
+      <Label layoutX="183.0" layoutY="129.0" text="Then, choose the quantity" />
+      <Label layoutX="184.0" layoutY="154.0" text="To reset, either choose a different coffee size or click &quot;Reset &amp; Try again&quot;" />
    </children>
 </AnchorPane>
