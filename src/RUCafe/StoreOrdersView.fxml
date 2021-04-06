@@ -13,9 +13,9 @@
       </Label>
       <ComboBox fx:id="orderNumberCombobox" layoutX="67.0" layoutY="77.0" prefWidth="150.0" />
       <Label layoutX="234.0" layoutY="81.0" text="Total for this order:" />
-      <TextField fx:id="totalForSelectedOrderTxtField" layoutX="345.0" layoutY="77.0" />
-      <Button fx:id="cancelSelectedOrder" layoutX="122.0" layoutY="318.0" mnemonicParsing="false" text="Cancel Selected Order" />
-      <Button fx:id="exportOrders" layoutX="311.0" layoutY="318.0" mnemonicParsing="false" text="Export Orders" />
-      <ListView fx:id="ListOfOrderListView" layoutX="93.0" layoutY="111.0" prefHeight="200.0" prefWidth="350.0" />
+      <Button fx:id="cancelSelectedOrder" layoutX="122.0" layoutY="328.0" mnemonicParsing="false" text="Cancel Selected Order" />
+      <Button fx:id="exportOrders" layoutX="311.0" layoutY="328.0" mnemonicParsing="false" text="Export Orders" />
+      <ListView fx:id="ListOfOrderListView" layoutX="93.0" layoutY="121.0" prefHeight="200.0" prefWidth="350.0" />
+      <TextArea fx:id="totalForSelectedOrderTxtField" layoutX="341.0" layoutY="71.0" prefHeight="38.0" prefWidth="102.0" />
    </children>
 </AnchorPane>

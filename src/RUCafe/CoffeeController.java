@@ -44,7 +44,6 @@ public class CoffeeController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle){
-
         ObservableList<String> coffeeSizeList = FXCollections.observableArrayList("Short" , "Tall" , "Grande", "Venti");
         ObservableList<Integer> coffeeQuantityList = FXCollections.observableArrayList(1,2,3);
         coffeeSize.setItems(coffeeSizeList);
@@ -59,6 +58,7 @@ public class CoffeeController implements Initializable {
         Caramel.setSelected(false);
         WhippedCream.setDisable(true);
         WhippedCream.setSelected(false);
+        resetEverything.setDisable(true);
     }
 
     /**s
@@ -72,6 +72,7 @@ public class CoffeeController implements Initializable {
             newCoffee.addIn.add("Milk");
             String s = String.format("%.02f", newCoffee.itemPrice());
             subtotalAreaTextArea.setText(String.valueOf(s));
+            resetEverything.setDisable(false);
         }else{
             newCoffee.remove(Milk);
             newCoffee.addIn.remove("Milk");
@@ -91,6 +92,7 @@ public class CoffeeController implements Initializable {
             newCoffee.addIn.add("Syrup");
             String s = String.format("%.02f", newCoffee.itemPrice());
             subtotalAreaTextArea.setText(String.valueOf(s));
+            resetEverything.setDisable(false);
 
         }else{
             newCoffee.remove(Syrup);
@@ -111,6 +113,7 @@ public class CoffeeController implements Initializable {
             newCoffee.addIn.add("Caramel");
             String s = String.format("%.02f", newCoffee.itemPrice());
             subtotalAreaTextArea.setText(String.valueOf(s));
+            resetEverything.setDisable(false);
         }else{
             newCoffee.remove(Caramel);
             newCoffee.addIn.remove("Caramel");
@@ -130,6 +133,7 @@ public class CoffeeController implements Initializable {
             newCoffee.addIn.add("Cream");
             String s = String.format("%.02f", newCoffee.itemPrice());
             subtotalAreaTextArea.setText(String.valueOf(s));
+            resetEverything.setDisable(false);
         }else{
             newCoffee.remove(Cream);
             newCoffee.addIn.remove("Cream");
@@ -149,6 +153,7 @@ public class CoffeeController implements Initializable {
             newCoffee.addIn.add("Whipped Cream");
             String s = String.format("%.02f", newCoffee.itemPrice());
             subtotalAreaTextArea.setText(String.valueOf(s));
+            resetEverything.setDisable(false);
         }else{
             newCoffee.remove(WhippedCream);
             newCoffee.addIn.remove("Whipped Cream");
@@ -157,6 +162,25 @@ public class CoffeeController implements Initializable {
         }
     }
 
+
+    /**
+     *
+     */
+    private void helpSetSizesProperties(){
+        String s = String.format("%.02f", newCoffee.itemPrice());
+        subtotalAreaTextArea.setText(String.valueOf(s));
+        Milk.setDisable(false);
+        Milk.setSelected(false);
+        Syrup.setDisable(false);
+        Syrup.setSelected(false);
+        Cream.setDisable(false);
+        Cream.setSelected(false);
+        Caramel.setDisable(false);
+        Caramel.setSelected(false);
+        WhippedCream.setDisable(false);
+        WhippedCream.setSelected(false);
+        resetEverything.setDisable(false);
+    }
     /**
      *
      * @param event
@@ -166,63 +190,35 @@ public class CoffeeController implements Initializable {
         String getSelection = coffeeSize.getSelectionModel().getSelectedItem().toString();
         if(getSelection.equals("Short")){
             newCoffee = new Coffee(0);
-            String s = String.format("%.02f", newCoffee.itemPrice());
-            subtotalAreaTextArea.setText(String.valueOf(s));
-            Milk.setDisable(false);
-            Milk.setSelected(false);
-            Syrup.setDisable(false);
-            Syrup.setSelected(false);
-            Cream.setDisable(false);
-            Cream.setSelected(false);
-            Caramel.setDisable(false);
-            Caramel.setSelected(false);
-            WhippedCream.setDisable(false);
-            WhippedCream.setSelected(false);
+            helpSetSizesProperties();
         }else if(getSelection.equals("Tall")){
             newCoffee = new Coffee(1);
-            String s = String.format("%.02f", newCoffee.itemPrice());
-            subtotalAreaTextArea.setText(String.valueOf(s));
-            Milk.setDisable(false);
-            Milk.setSelected(false);
-            Syrup.setDisable(false);
-            Syrup.setSelected(false);
-            Cream.setDisable(false);
-            Cream.setSelected(false);
-            Caramel.setDisable(false);
-            Caramel.setSelected(false);
-            WhippedCream.setDisable(false);
-            WhippedCream.setSelected(false);
+            helpSetSizesProperties();
         }else if(getSelection.equals("Grande")){
             newCoffee = new Coffee(2);
-            String s = String.format("%.02f", newCoffee.itemPrice());
-            subtotalAreaTextArea.setText(String.valueOf(s));
-            Milk.setDisable(false);
-            Milk.setSelected(false);
-            Syrup.setDisable(false);
-            Syrup.setSelected(false);
-            Cream.setDisable(false);
-            Cream.setSelected(false);
-            Caramel.setDisable(false);
-            Caramel.setSelected(false);
-            WhippedCream.setDisable(false);
-            WhippedCream.setSelected(false);
+            helpSetSizesProperties();
         }else if(getSelection.equals("Venti")){
             newCoffee = new Coffee(3);
-            String s = String.format("%.02f", newCoffee.itemPrice());
-            subtotalAreaTextArea.setText(String.valueOf(s));
-            Milk.setDisable(false);
-            Milk.setSelected(false);
-            Syrup.setDisable(false);
-            Syrup.setSelected(false);
-            Cream.setDisable(false);
-            Cream.setSelected(false);
-            Caramel.setDisable(false);
-            Caramel.setSelected(false);
-            WhippedCream.setDisable(false);
-            WhippedCream.setSelected(false);
+            helpSetSizesProperties();
         }
     }
 
+    /**
+     *
+     * @param x
+     */
+    private void helpSetQuantityProperties(int x){
+        String s = String.format("%.02f", (x * newCoffee.itemPrice()));
+        subtotalAreaTextArea.setText(String.valueOf(s));
+        newCoffee.quantityKeepTrack =x;
+        Milk.setDisable(true);
+        Syrup.setDisable(true);
+        Caramel.setDisable(true);
+        Cream.setDisable(true);
+        WhippedCream.setDisable(true);
+        coffeeSize.setDisable(true);
+        resetEverything.setDisable(false);
+    }
     /**
      *
      * @param event
@@ -231,35 +227,11 @@ public class CoffeeController implements Initializable {
     void quantityCalculation(ActionEvent event){
         String getSelectionQuantity = quantityOfCoffee.getSelectionModel().getSelectedItem().toString();
        if(getSelectionQuantity.equals("1")){
-            String s = String.format("%.02f", newCoffee.itemPrice());
-            subtotalAreaTextArea.setText(String.valueOf(s));
-            newCoffee.quantityKeepTrack =1;
-            Milk.setDisable(true);
-            Syrup.setDisable(true);
-            Caramel.setDisable(true);
-            Cream.setDisable(true);
-            WhippedCream.setDisable(true);
-            coffeeSize.setDisable(true);
+            helpSetQuantityProperties(1);
         }else if(getSelectionQuantity.equals("2")){
-           String s = String.format("%.02f", (newCoffee.itemPrice()*2));
-           subtotalAreaTextArea.setText(String.valueOf(s));
-           newCoffee.quantityKeepTrack =2;
-           Milk.setDisable(true);
-           Syrup.setDisable(true);
-           Caramel.setDisable(true);
-           Cream.setDisable(true);
-           WhippedCream.setDisable(true);
-           coffeeSize.setDisable(true);
+           helpSetQuantityProperties(2);
         }else if(getSelectionQuantity.equals("3")){
-           String s = String.format("%.02f", (newCoffee.itemPrice()*3));
-           subtotalAreaTextArea.setText(String.valueOf(s));
-           newCoffee.quantityKeepTrack =3;
-           Milk.setDisable(true);
-           Syrup.setDisable(true);
-           Caramel.setDisable(true);
-           Cream.setDisable(true);
-           WhippedCream.setDisable(true);
-           coffeeSize.setDisable(true);
+           helpSetQuantityProperties(3);
         }
     }
 

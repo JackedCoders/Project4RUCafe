@@ -132,10 +132,9 @@ public class DonutController implements Initializable {
 
     /**
      *
-     * @param event
+     * @param x number of donuts to add (either 1, 2 or 3)
      */
-    @FXML
-    void addOneDonutToOrder(ActionEvent event){
+    private void helpAddingDonutToOrder(int x){
         String nameOfDonut = donutFlavorListView.getSelectionModel().getSelectedItem();
         String getSelection = typeOfDonut.getSelectionModel().getSelectedItem().toString();
         if(nameOfDonut == null){
@@ -145,13 +144,21 @@ public class DonutController implements Initializable {
             showErrorNull.setTitle("Choose donut first & Try Again");
             showErrorNull.showAndWait();
         }else{
-            newDonut.setQuantityOfDonut(1);
-            overallDonutOrderPrice += newDonut.itemPrice();
+            newDonut.setQuantityOfDonut(x);
+            overallDonutOrderPrice += (x*newDonut.itemPrice());
             String s = String.format("%.02f", overallDonutOrderPrice);
             subTotalTextArea.setText(String.valueOf(s));
-            donutAddedListView.getItems().add( getSelection + ", " + nameOfDonut + " [1]");
+            donutAddedListView.getItems().add( getSelection + ", " + nameOfDonut + "[" + x + "]");
             addToOrder.setDisable(false);
         }
+    }
+    /**
+     *
+     * @param event
+     */
+    @FXML
+    void addOneDonutToOrder(ActionEvent event){
+        helpAddingDonutToOrder(1);
     }
 
     /**
@@ -160,22 +167,7 @@ public class DonutController implements Initializable {
      */
     @FXML
     void addOTwoDonutToOrder(ActionEvent event){
-        String getSelection = typeOfDonut.getSelectionModel().getSelectedItem().toString();
-        String nameOfDonut = donutFlavorListView.getSelectionModel().getSelectedItem();
-        if(nameOfDonut == null){
-            //throw null errors here I think
-            Alert showErrorNull = new Alert(Alert.AlertType.WARNING);
-            showErrorNull.setContentText("Donut selection & flavor is required before quantity can be chosen");
-            showErrorNull.setTitle("Choose donut first & Try Again");
-            showErrorNull.showAndWait();
-        }else{
-            newDonut.setQuantityOfDonut(2);
-            overallDonutOrderPrice += (2*newDonut.itemPrice());
-            String s = String.format("%.02f", overallDonutOrderPrice);
-            subTotalTextArea.setText(String.valueOf(s));
-            donutAddedListView.getItems().add( getSelection + ", " + nameOfDonut + " [2]");
-            addToOrder.setDisable(false);
-        }
+        helpAddingDonutToOrder(2);
     }
 
 
@@ -186,24 +178,14 @@ public class DonutController implements Initializable {
      */
     @FXML
     void addOThreeDonutToOrder(ActionEvent event){
-        String nameOfDonut = donutFlavorListView.getSelectionModel().getSelectedItem();
-        String getSelection = typeOfDonut.getSelectionModel().getSelectedItem().toString();
-        if(nameOfDonut == null){
-            //throw null errors here I think
-            Alert showErrorNull = new Alert(Alert.AlertType.WARNING);
-            showErrorNull.setContentText("Donut selection & flavor is required before quantity can be chosen");
-            showErrorNull.setTitle("Choose donut first & Try Again");
-            showErrorNull.showAndWait();
-        }else{
-            newDonut.setQuantityOfDonut(3);
-            overallDonutOrderPrice += (3*newDonut.itemPrice());
-            String s = String.format("%.02f", overallDonutOrderPrice);
-            subTotalTextArea.setText(String.valueOf(s));
-            donutAddedListView.getItems().add( getSelection + ", " + nameOfDonut + " [3]");
-            addToOrder.setDisable(false);
-        }
+        helpAddingDonutToOrder(3);
     }
 
+    /**
+     *
+     * @param donut
+     * @return
+     */
     public Donut identityType(String donut){
         String getSelection = typeOfDonut.getSelectionModel().getSelectedItem().toString();
         if(getSelection.equals("Yeast Donut")){

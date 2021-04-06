@@ -1,10 +1,8 @@
 package RUCafe;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 
 /**
  *
@@ -18,10 +16,30 @@ public class StoreOrdersController {
     private ComboBox orderNumberCombobox;
 
     @FXML
-    private TextField totalForSelectedOrderTxtField;
+    private TextArea totalForSelectedOrderTxtField;
 
     @FXML
-    private ListView ListOfOrderListView;
+    private ListView<String> ListOfOrderListView;
+    StoreOrders allOrders = new StoreOrders();
+    private Order orderOBJ;
+
+    public void setTotal(double total){
+        totalForSelectedOrderTxtField.setText(Double.toString(total));
+    }
+
+    public void setItems(){
+        ListOfOrderListView.setItems(DonutController.observableList);
+    }
+
+    public void setOrderController(Order order){
+        orderOBJ = order;
+    }
+
+    @FXML
+    void cancelSelectedOrderFromStoreOrders(ActionEvent event){
+
+    }
+
 
 
 }
