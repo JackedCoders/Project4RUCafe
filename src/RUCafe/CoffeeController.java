@@ -33,6 +33,10 @@ public class CoffeeController implements Initializable {
     @FXML
     private ComboBox<Integer> quantityOfCoffee;
 
+    private final int CoffeeSizeShort =0;
+    private final int CoffeeSizeTall =1; //also quantity 1
+    private final int CoffeeSizeGrande =2; //also quantity 2
+    private final int CoffeeSizeVenti =3; //also quantity 3
     Coffee newCoffee = new Coffee(0);
     Order newOrder = new Order();
     StoreOrders newTotalOrder = new StoreOrders();
@@ -187,18 +191,22 @@ public class CoffeeController implements Initializable {
      */
     @FXML
     void sizesCalculation(ActionEvent event){
+//        private final int CoffeeSizeShort =0;
+//        private final int CoffeeSizeTall =1;
+//        private final int CoffeeSizeGrande =2;
+//        private final int CoffeeSizeVenti =3;
         String getSelection = coffeeSize.getSelectionModel().getSelectedItem().toString();
         if(getSelection.equals("Short")){
-            newCoffee = new Coffee(0);
+            newCoffee = new Coffee(CoffeeSizeShort);
             helpSetSizesProperties();
         }else if(getSelection.equals("Tall")){
-            newCoffee = new Coffee(1);
+            newCoffee = new Coffee(CoffeeSizeTall);
             helpSetSizesProperties();
         }else if(getSelection.equals("Grande")){
-            newCoffee = new Coffee(2);
+            newCoffee = new Coffee(CoffeeSizeGrande);
             helpSetSizesProperties();
         }else if(getSelection.equals("Venti")){
-            newCoffee = new Coffee(3);
+            newCoffee = new Coffee(CoffeeSizeVenti);
             helpSetSizesProperties();
         }
     }
@@ -227,11 +235,11 @@ public class CoffeeController implements Initializable {
     void quantityCalculation(ActionEvent event){
         String getSelectionQuantity = quantityOfCoffee.getSelectionModel().getSelectedItem().toString();
        if(getSelectionQuantity.equals("1")){
-            helpSetQuantityProperties(1);
+            helpSetQuantityProperties(CoffeeSizeTall);
         }else if(getSelectionQuantity.equals("2")){
-           helpSetQuantityProperties(2);
+           helpSetQuantityProperties(CoffeeSizeGrande);
         }else if(getSelectionQuantity.equals("3")){
-           helpSetQuantityProperties(3);
+           helpSetQuantityProperties(CoffeeSizeVenti);
         }
     }
 
