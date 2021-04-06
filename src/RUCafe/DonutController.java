@@ -31,13 +31,14 @@ public class DonutController implements Initializable {
     @FXML
     private ComboBox<String> typeOfDonut;
 
+    public static ObservableList<String> observableList = FXCollections.observableArrayList();
     private Order orderOBJ;
     double overallDonutOrderPrice =0;
     private int yeastDonut = 0;
     private int cakeDonut = 1;
     private int donutHole = 2;
     Donut newDonut = new Donut(yeastDonut);
-    Order newOrder = new Order();
+    private String donutTypeString;
 
     /**
      * This method populates the comboboxes with the type of donuts and the amount a user wants in that order to be added to the cart
@@ -201,16 +202,31 @@ public class DonutController implements Initializable {
         }
     }
 
+    public Donut identityType(String donut){
+        String getSelection = typeOfDonut.getSelectionModel().getSelectedItem().toString();
+        if(getSelection.equals("Yeast Donut")){
+            donutTypeString ="Yeast Donut";
+        }else if (getSelection.equals("Cake Donut")){
+            donutTypeString ="Cake Donut";
+        }else if(getSelection.equals("Donut Hole")){
+            donutTypeString = "Donut Hole";
+        }
+        Donut donutToAdd = new Donut(getSelection);
+        return donutToAdd;
+    }
     /**
      *
      * @param event
      */
     @FXML
     public void addDonutOrder(ActionEvent event){
-        ObservableList<String> listOfDonutOrders = donutAddedListView.getItems();
-        for(String s: listOfDonutOrders){
-            orderOBJ.add(s);
-        }
+      ObservableList<String> listItems = donutAddedListView.getItems();
+      orderOBJ.orderList.add(newDonut);
+      for(int i =0; i<listItems.size();i++){
+          observableList.add(listItems.get(i));
+          Donut picked = identityType(listItems.get(i));
+          orderOBJ.add(picked);
+      }
     }
 
 

@@ -1,50 +1,42 @@
 package RUCafe;
+
+import java.util.ArrayList;
+
 /**
  *
  * @author Manveer Singh, Prasidh Sriram
  */
 public class Order implements Customizable{
-
-    private int order_ID; //Unique number assigned to each order
-    private MenuItem [] itemList;
-    public int getOrder_ID(){
-        return order_ID;
-    }
+    public static int orderNum;
+    ArrayList<MenuItem> orderList;
 
     public Order(){
-        itemList = new MenuItem[5];
+        orderNum =1;
+        this.orderList = new ArrayList<>();
     }
 
-    /**
-     *
-     * @param obj
-     * @return
-     */
-    @Override
-    public boolean add(Object obj) {
-        return false;
+    public boolean add(Object obj){
+        MenuItem item = (MenuItem) obj;
+        this.orderList.add(item);
+        return true;
     }
 
-    /**
-     *
-     * @param obj
-     * @return
-     */
-    @Override
-    public boolean remove(Object obj) {
-        return false;
+    public boolean remove(Object obj){
+        MenuItem item = (MenuItem) obj;
+        this.orderList.remove(item);
+        return true;
     }
 
-    public boolean equals(Object obj){
-        Order newOrder;
-        try{
-            newOrder = (Order) obj;
-        }catch(Exception e){
-            return false;
+    public ArrayList<MenuItem> getMenuItems(){
+        return this.orderList;
+    }
+
+    public String toString(){
+        String res ="";
+        for(int i =0; i<this.orderList.size(); i++){
+            res += this.orderList.get(i).toString();
         }
-        if( this.order_ID == newOrder.getOrder_ID()){
-            return true;
-        }
-        return false;
+        return res;
     }
+
 }

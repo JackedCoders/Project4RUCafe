@@ -18,10 +18,7 @@ import java.io.IOException;
  * @author Manveer Singh, Prasidh Sriram
  */
 public class MainMenuController{
-    CoffeeController addInfoCoffee;
-    StoreOrdersController addInfoStores;
-    YourOrderController addCurrentOrderInfo;
-    DonutController addInfoDonut;
+    private StoreOrders storeOrders = new StoreOrders();
     private Order order = new Order();
 
     @FXML
@@ -36,7 +33,8 @@ public class MainMenuController{
      */
     @FXML
     private void openCoffeeOrdering(ActionEvent event) throws IOException{
-        Parent root_parent = FXMLLoader.load(getClass().getResource("CoffeeView.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("CoffeeView.fxml"));
+        Parent root_parent = (Parent) fxmlLoader.load();
         Scene root_scene = new Scene(root_parent,600, 450);
         Stage root_stage = new Stage();
         root_stage.initModality(Modality.WINDOW_MODAL);
@@ -78,15 +76,19 @@ public class MainMenuController{
      */
     @FXML
     private void viewAllStoreOrders(ActionEvent event) throws IOException{
-        Parent root_parent = FXMLLoader.load(getClass().getResource("StoreOrdersView.fxml"));
+
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("StoreOrdersView.fxml"));
+        Parent root_parent = (Parent) fxmlLoader.load();
         Scene root_scene = new Scene(root_parent,600, 450);
         Stage root_stage = new Stage();
+
         root_stage.initModality(Modality.WINDOW_MODAL);
         root_stage.initOwner(Main.parentStage);
         root_stage.resizableProperty().setValue(false);
         root_stage.setScene(root_scene);
         root_stage.setTitle("All of store orders here!!");
         root_stage.show();
+
     }
 
     /**
@@ -97,14 +99,29 @@ public class MainMenuController{
      */
     @FXML
     private void viewYourCurrentOrder(ActionEvent event) throws IOException{
-        Parent root_parent = FXMLLoader.load(getClass().getResource("YourOrderView.fxml"));
+        double subtotal =0;
+        for(MenuItem item : order.getMenuItems()){
+            subtotal += item.getItemPrice();
+        }
+        double tax = 0.06625;
+        double salestax = subtotal * tax;
+        double total = salestax + subtotal;
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("YourOrderView.fxml"));
+        Parent root_parent = (Parent) fxmlLoader.load();
         Scene root_scene = new Scene(root_parent,600, 450);
         Stage root_stage = new Stage();
+        YourOrderController yourOrder = fxmlLoader.getController();
+        yourOrder.setSubTotal(Double.parseDouble(String.format("%.02f", subtotal)));
+        yourOrder.setSalesTax(Double.parseDouble(String.format("%.02f", salestax)));
+        yourOrder.setTotal(Double.parseDouble(String.format("%.02f", total)));
+        yourOrder.setItems();
         root_stage.initModality(Modality.WINDOW_MODAL);
         root_stage.initOwner(Main.parentStage);
         root_stage.resizableProperty().setValue(false);
         root_stage.setScene(root_scene);
         root_stage.setTitle("Your current order!!");
         root_stage.show();
+        yourOrder.setOrder(this.order);
+        yourOrder.setStoreOrder(this.storeOrders);
     }
 }

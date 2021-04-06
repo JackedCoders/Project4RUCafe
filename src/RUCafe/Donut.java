@@ -45,6 +45,9 @@ public class Donut extends MenuItem implements Customizable{
 
     }
 
+    public Donut(String donutName){
+        this.donutName = donutName;
+    }
     /**
      *
      * @return
