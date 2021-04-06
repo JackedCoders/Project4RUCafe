@@ -34,11 +34,13 @@ public class DonutController implements Initializable {
     public static ObservableList<String> observableList = FXCollections.observableArrayList();
     private Order orderOBJ;
     double overallDonutOrderPrice =0;
-    private int yeastDonut = 0;
-    private int cakeDonut = 1;
-    private int donutHole = 2;
-    Donut newDonut = new Donut(yeastDonut);
+    private final int YEAST_DONUT = 0;
+    private final int CAKE_DONUT = 1; //also ADD_ONE
+    private final int DONUT_HOLE = 2; //also ADD_TWO
+    private final int ADD_THREE = 3;
+    Donut newDonut = new Donut(YEAST_DONUT);
     private String donutTypeString;
+    
 
     /**
      * This method populates the comboboxes with the type of donuts and the amount a user wants in that order to be added to the cart
@@ -71,19 +73,19 @@ public class DonutController implements Initializable {
     void fillListViewLeft(ActionEvent event){
         String getSelection = typeOfDonut.getSelectionModel().getSelectedItem().toString();
         if(getSelection.equals("Cake Donut")){
-            newDonut = new Donut(cakeDonut);
+            newDonut = new Donut(CAKE_DONUT);
             donutFlavorListView.getItems().clear();
             donutFlavorListView.getItems().add("Lemon");
             donutFlavorListView.getItems().add("Orange");
             donutFlavorListView.getItems().add("Vanilla");
         } else if(getSelection.equals("Yeast Donut")){
-            newDonut = new Donut(yeastDonut);
+            newDonut = new Donut(YEAST_DONUT);
             donutFlavorListView.getItems().clear();
             donutFlavorListView.getItems().add("Powdered");
             donutFlavorListView.getItems().add("Apple Fritter");
             donutFlavorListView.getItems().add("Jelly Filled");
         }else if(getSelection.equals("Donut Hole")){
-            newDonut = new Donut(donutHole);
+            newDonut = new Donut(DONUT_HOLE);
             donutFlavorListView.getItems().clear();
             donutFlavorListView.getItems().add("Sour Cream");
             donutFlavorListView.getItems().add("Sugar");
@@ -158,7 +160,7 @@ public class DonutController implements Initializable {
      */
     @FXML
     void addOneDonutToOrder(ActionEvent event){
-        helpAddingDonutToOrder(1);
+        helpAddingDonutToOrder(CAKE_DONUT);
     }
 
     /**
@@ -167,7 +169,7 @@ public class DonutController implements Initializable {
      */
     @FXML
     void addOTwoDonutToOrder(ActionEvent event){
-        helpAddingDonutToOrder(2);
+        helpAddingDonutToOrder(DONUT_HOLE);
     }
 
 
@@ -178,7 +180,7 @@ public class DonutController implements Initializable {
      */
     @FXML
     void addOThreeDonutToOrder(ActionEvent event){
-        helpAddingDonutToOrder(3);
+        helpAddingDonutToOrder(ADD_THREE);
     }
 
     /**
