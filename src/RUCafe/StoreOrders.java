@@ -1,53 +1,50 @@
 package RUCafe;
+
+import java.util.ArrayList;
+
 /**
- *
+ * Backend file that contains the arraylist of order for all the store orders.
+ * This class has an add and remove method that overrides of Cusomizable interface along with a getter method to
+ * return the contents of the arraylist
  * @author Manveer Singh, Prasidh Sriram
  */
 public class StoreOrders implements Customizable{
 
-    private Order [] orderList;
-    private int numOrders;
+    private ArrayList<Order> listAllOrders = new ArrayList<>();
 
     /**
-     *
+     * getter method that returns the contents of listAllOrders above
+     * @return everything inside the array
      */
-    public StoreOrders(){
-        orderList = new Order[5];
-        numOrders = 0;
+    public ArrayList<Order> getListAllOrders() {
+        return listAllOrders;
     }
 
     /**
-     *
+     * removes the order obj from the arraylist
+     * @param obj what we want to remove
+     * @return
      */
-    void grow(){
-        Order [] newList = new Order[numOrders + 5];
-        for(int i = 0; i < numOrders; i++){
-            newList[i] = orderList[i];
+    @Override
+    public boolean remove(Object obj){
+        if(obj instanceof Order){
+            listAllOrders.remove(obj);
+            return true;
         }
-        orderList = newList;
+        return false;
     }
 
     /**
-     *
-     * @param obj
-     * @return
+     * adds the order obj to the arraylist
+     * @param obj whwat we want to add
+     * @return what we want to add
      */
     @Override
-    public boolean add(Object obj) {
-        Order newOrder = (Order) obj;
-
-        orderList[numOrders] = newOrder;
-        numOrders++;
-        return true;
-    }
-
-    /**
-     *
-     * @param obj
-     * @return
-     */
-    @Override
-    public boolean remove(Object obj) {
+    public boolean add(Object obj){
+        if(obj instanceof Order){
+            listAllOrders.add((Order) obj);
+            return true;
+        }
         return false;
     }
 }

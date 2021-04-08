@@ -11,7 +11,8 @@ public class MenuItem {
     protected double itemPrice;
 
     /**
-     *
+     * method that takes in a double parameter called itemPrice and assigns it to our private instance variable
+     * itemPrice
      * @param itemPrice
      */
     public void itemPrice(double itemPrice){
@@ -27,13 +28,4 @@ public class MenuItem {
         return this.itemPrice;
     }
 
-    /**
-     * ToString method that will help with exporting the orders at the end of the order placing
-     * @return the string which contains all of the orders
-     */
-    public String toString(){
-        String r = super.toString();
-        r += "Menu Item";
-        return r;
-    }
 }

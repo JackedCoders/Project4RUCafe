@@ -110,17 +110,20 @@ public class MainMenuController{
         Parent root_parent = (Parent) fxmlLoader.load();
         Scene root_scene = new Scene(root_parent,600, 450);
         Stage root_stage = new Stage();
+
         YourOrderController yourOrder = fxmlLoader.getController();
         yourOrder.setSubTotal(Double.parseDouble(String.format("%.02f", subtotal)));
         yourOrder.setSalesTax(Double.parseDouble(String.format("%.02f", salestax)));
         yourOrder.setTotal(Double.parseDouble(String.format("%.02f", total)));
         yourOrder.setItems();
+
         root_stage.initModality(Modality.WINDOW_MODAL);
         root_stage.initOwner(Main.parentStage);
         root_stage.resizableProperty().setValue(false);
         root_stage.setScene(root_scene);
         root_stage.setTitle("Your current order!!");
         root_stage.show();
+
         yourOrder.setOrder(this.order);
         yourOrder.setStoreOrder(this.storeOrders);
     }

@@ -51,12 +51,6 @@ public class StoreOrdersController {
     void exportAllStoreOrders(ActionEvent event) throws IOException {
         //should be same as project 3
         ObservableList<String> allOrders = ListOfOrderListView.getItems();
-        if(allOrders.equals(null)){
-            Alert error = new Alert(Alert.AlertType.WARNING);
-            error.setHeaderText("Try Again!!");
-            error.setContentText("Can not be exported! No orders detected, Please add orders.");
-            error.showAndWait();
-        }else{
             FileChooser chooser = new FileChooser();
             chooser.setTitle("Open Target File for the Export");
             chooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Text Files", "*.txt"),
@@ -72,16 +66,28 @@ public class StoreOrdersController {
                 fileWriter.close();
             }catch(NullPointerException e){
                 Alert nullError = new Alert(Alert.AlertType.WARNING);
-                nullError.setTitle("Invalid input");
-                nullError.setContentText("Nowhere to write the orders to! Try again please");
+                nullError.setTitle("Export Cancelled");
+                nullError.setContentText("Please click on Export and try again!!");
                 nullError.showAndWait();
                 return;
-            }
         }
     }
+
+    /**
+     *
+     * @param event
+     */
     @FXML
     void cancelSelectedOrderFromStoreOrders(ActionEvent event){
-
+            if(ListOfOrderListView.getSelectionModel().isEmpty()){
+                Alert emptyError = new Alert(Alert.AlertType.WARNING);
+                emptyError.setContentText("Add or select the order you want to cancel");
+                emptyError.setTitle("No Order Selected to Cancel");
+                emptyError.showAndWait();
+            }else{
+                String orderToCancel = ListOfOrderListView.getSelectionModel().getSelectedItem();
+                ListOfOrderListView.getItems().remove(orderToCancel);
+            }
     }
 
 

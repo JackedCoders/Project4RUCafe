@@ -42,8 +42,8 @@ public class CoffeeController implements Initializable {
     private final int COFFEE_SIZE_VENTI =3; //also quantity 3
     private Coffee newCoffee = new Coffee(0);
     private Order order;
-    private ObservableList<String> coffeeSizeList = FXCollections.observableArrayList("Short" , "Tall" , "Grande", "Venti");
-    private ObservableList<Integer> coffeeQuantityList = FXCollections.observableArrayList(1,2,3);
+    final private ObservableList<String> COFFEE_SIZE_LIST = FXCollections.observableArrayList("Short" , "Tall" , "Grande", "Venti");
+    final private ObservableList<Integer> COFFEE_QUANTITY_LIST = FXCollections.observableArrayList(1,2,3);
     /**
      *
      * @param url
@@ -51,8 +51,8 @@ public class CoffeeController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle){
-        coffeeSize.setItems(coffeeSizeList);
-        quantityOfCoffee.setItems(coffeeQuantityList);
+        coffeeSize.setItems(COFFEE_SIZE_LIST);
+        quantityOfCoffee.setItems(COFFEE_QUANTITY_LIST);
         Milk.setDisable(true);
         Milk.setSelected(false);
         Syrup.setDisable(true);
@@ -175,8 +175,6 @@ public class CoffeeController implements Initializable {
      *
      */
     private void helpSetSizesProperties(){
-        String s = String.format("%.02f", newCoffee.itemPrice());
-        subtotalAreaTextArea.setText(String.valueOf(s));
         Milk.setDisable(false);
         Milk.setSelected(false);
         Syrup.setDisable(false);
@@ -187,7 +185,8 @@ public class CoffeeController implements Initializable {
         Caramel.setSelected(false);
         WhippedCream.setDisable(false);
         WhippedCream.setSelected(false);
-        resetEverything.setDisable(false);
+        quantityOfCoffee.setDisable(false);
+        addToOrder.setDisable(false);
     }
     /**
      *
@@ -198,23 +197,27 @@ public class CoffeeController implements Initializable {
         String getSelection = coffeeSize.getSelectionModel().getSelectedItem().toString();
         if(getSelection.equals("Short")){
             newCoffee = new Coffee(COFFEE_SIZE_SHORT);
-            quantityOfCoffee.setDisable(false);
-            addToOrder.setDisable(false);
+            resetEverything.setDisable(false);
+            String s = String.format("%.02f", newCoffee.itemPrice());
+            subtotalAreaTextArea.setText(String.valueOf(s));
             helpSetSizesProperties();
         }else if(getSelection.equals("Tall")){
             newCoffee = new Coffee(COFFEE_SIZE_TALL);
-            quantityOfCoffee.setDisable(false);
-            addToOrder.setDisable(false);
+            resetEverything.setDisable(false);
+            String s = String.format("%.02f", newCoffee.itemPrice());
+            subtotalAreaTextArea.setText(String.valueOf(s));
             helpSetSizesProperties();
         }else if(getSelection.equals("Grande")){
             newCoffee = new Coffee(COFFEE_SIZE_GRANDE);
-            quantityOfCoffee.setDisable(false);
-            addToOrder.setDisable(false);
+            resetEverything.setDisable(false);
+            String s = String.format("%.02f", newCoffee.itemPrice());
+            subtotalAreaTextArea.setText(String.valueOf(s));
             helpSetSizesProperties();
         }else if(getSelection.equals("Venti")){
             newCoffee = new Coffee(COFFEE_SIZE_VENTI);
-            quantityOfCoffee.setDisable(false);
-            addToOrder.setDisable(false);
+            resetEverything.setDisable(false);
+            String s = String.format("%.02f", newCoffee.itemPrice());
+            subtotalAreaTextArea.setText(String.valueOf(s));
             helpSetSizesProperties();
         }
     }
@@ -260,22 +263,12 @@ public class CoffeeController implements Initializable {
      */
     @FXML
     void resetEverythingGUI(ActionEvent event){
-        Milk.setDisable(false);
-        Milk.setSelected(false);
-        Syrup.setDisable(false);
-        Syrup.setSelected(false);
-        Cream.setDisable(false);
-        Cream.setSelected(false);
-        Caramel.setDisable(false);
-        Caramel.setSelected(false);
-        WhippedCream.setDisable(false);
-        WhippedCream.setSelected(false);
+        helpSetSizesProperties();
         subtotalAreaTextArea.clear();
         coffeeSize.setDisable(false);
-        quantityOfCoffee.setDisable(false);
         addToCurrentOrderListView.getItems().clear();
         subtotalAreaTextArea.clear();
-        quantityOfCoffee.setItems(coffeeQuantityList);
+        quantityOfCoffee.setItems(COFFEE_QUANTITY_LIST);
         String getSelection = coffeeSize.getSelectionModel().getSelectedItem().toString();
         if(getSelection.equals("Short")){
             newCoffee.itemPrice = newCoffee.SHORT_COFFEE_PRICE;
@@ -354,9 +347,9 @@ public class CoffeeController implements Initializable {
             String s = String.format("%.02f", newCoffee.itemPrice);
             addToCurrentOrderListView.getItems().add("Size: " + coffeeSizeToAdd + " , Quantity: " + quantityToAdd + " , Price $" + subtotalAreaTextArea.getText() +" , Addons: " + AddOns);
             ObservableList<String> currentOrderFinallist = addToCurrentOrderListView.getItems();
-            for(int i =0; i<currentOrderFinallist.size(); i++){
-                DonutController.observableList.add(currentOrderFinallist.get(i));
-                Coffee newPicked = createCoffeeObject(currentOrderFinallist.get(i));
+            for (String value : currentOrderFinallist) {
+                DonutController.observableList.add(value);
+                Coffee newPicked = createCoffeeObject(value);
                 order.add(newPicked);
             }
         }
