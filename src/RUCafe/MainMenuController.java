@@ -20,7 +20,7 @@ import java.io.IOException;
 public class MainMenuController{
     private StoreOrders storeOrders = new StoreOrders();
     private Order order = new Order();
-
+    public static final double SALES_TAX_RATE = 0.06625;
     @FXML
     private Button OrderDonutsButton, OrderCoffeeButton, ViewStoreOrdersButton, ViewYourOrderButton;
 
@@ -43,6 +43,9 @@ public class MainMenuController{
         root_stage.setScene(root_scene);
         root_stage.setTitle("Order Coffee here!!");
         root_stage.show();
+
+        CoffeeController coffeeController = fxmlLoader.getController();
+        coffeeController.passDataOrderController(this.order);
     }
 
     /**
@@ -79,6 +82,10 @@ public class MainMenuController{
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("StoreOrdersView.fxml"));
         Parent root_parent = (Parent) fxmlLoader.load();
+
+        StoreOrdersController newStoreOrder = fxmlLoader.getController();
+        newStoreOrder.setAllOrders(this.storeOrders);
+        newStoreOrder.updateComboBox();
         Scene root_scene = new Scene(root_parent,600, 450);
         Stage root_stage = new Stage();
 
@@ -103,20 +110,20 @@ public class MainMenuController{
         for(MenuItem item : order.getMenuItems()){
             subtotal += item.getItemPrice();
         }
-        double tax = 0.06625;
-        double salestax = subtotal * tax;
+        System.out.println(subtotal);
+        double salestax = subtotal * SALES_TAX_RATE;
         double total = salestax + subtotal;
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("YourOrderView.fxml"));
         Parent root_parent = (Parent) fxmlLoader.load();
-        Scene root_scene = new Scene(root_parent,600, 450);
-        Stage root_stage = new Stage();
+
 
         YourOrderController yourOrder = fxmlLoader.getController();
-        yourOrder.setSubTotal(Double.parseDouble(String.format("%.02f", subtotal)));
-        yourOrder.setSalesTax(Double.parseDouble(String.format("%.02f", salestax)));
-        yourOrder.setTotal(Double.parseDouble(String.format("%.02f", total)));
+        yourOrder.setSubTotal(subtotal);
+        yourOrder.setSalesTax(salestax);
+        yourOrder.setTotal(total);
         yourOrder.setItems();
-
+        Scene root_scene = new Scene(root_parent,600, 450);
+        Stage root_stage = new Stage();
         root_stage.initModality(Modality.WINDOW_MODAL);
         root_stage.initOwner(Main.parentStage);
         root_stage.resizableProperty().setValue(false);

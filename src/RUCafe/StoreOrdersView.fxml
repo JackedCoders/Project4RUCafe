@@ -11,7 +11,7 @@
             <Font size="25.0" />
          </font>
       </Label>
-      <ComboBox fx:id="orderNumberCombobox" layoutX="67.0" layoutY="77.0" prefWidth="150.0" />
+      <ComboBox fx:id="orderNumberCombobox" layoutX="67.0" layoutY="77.0" onAction="#displaySelectedOrderOnComboBox" prefWidth="150.0" />
       <Label layoutX="234.0" layoutY="81.0" text="Total for this order:" />
       <Button fx:id="cancelSelectedOrder" layoutX="122.0" layoutY="328.0" mnemonicParsing="false" onAction="#cancelSelectedOrderFromStoreOrders" text="Cancel Selected Order" />
       <Button fx:id="exportOrders" layoutX="311.0" layoutY="328.0" mnemonicParsing="false" onAction="#exportAllStoreOrders" text="Export Orders" />

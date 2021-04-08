@@ -38,7 +38,7 @@ public class DonutController implements Initializable {
     private final int CAKE_DONUT = 1; //also ADD_ONE
     private final int DONUT_HOLE = 2; //also ADD_TWO
     private final int ADD_THREE = 3;
-    private Donut newDonut = new Donut(YEAST_DONUT);
+    private Donut newDonut;
     private String donutTypeString;
     
 
@@ -74,19 +74,16 @@ public class DonutController implements Initializable {
     void fillListViewLeft(ActionEvent event){
         String getSelection = typeOfDonut.getSelectionModel().getSelectedItem().toString();
         if(getSelection.equals("Cake Donut")){
-            newDonut = new Donut(CAKE_DONUT);
             donutFlavorListView.getItems().clear();
             donutFlavorListView.getItems().add("Lemon");
             donutFlavorListView.getItems().add("Orange");
             donutFlavorListView.getItems().add("Vanilla");
         } else if(getSelection.equals("Yeast Donut")){
-            newDonut = new Donut(YEAST_DONUT);
             donutFlavorListView.getItems().clear();
             donutFlavorListView.getItems().add("Powdered");
             donutFlavorListView.getItems().add("Apple Fritter");
             donutFlavorListView.getItems().add("Jelly Filled");
         }else if(getSelection.equals("Donut Hole")){
-            newDonut = new Donut(DONUT_HOLE);
             donutFlavorListView.getItems().clear();
             donutFlavorListView.getItems().add("Sour Cream");
             donutFlavorListView.getItems().add("Sugar");
@@ -148,8 +145,18 @@ public class DonutController implements Initializable {
             showErrorNull.setTitle("Choose donut first & Try Again");
             showErrorNull.showAndWait();
         }else{
+            if(typeOfDonut.getSelectionModel().getSelectedItem().toString().equals("Yeast Donut")){
+                newDonut = new Donut(0, nameOfDonut, x+"");
+            }
+            if(typeOfDonut.getSelectionModel().getSelectedItem().toString().equals("Cake Donut")){
+                newDonut = new Donut(1, nameOfDonut, x+"");
+            }
+            if(typeOfDonut.getSelectionModel().getSelectedItem().toString().equals("Donut Hole")){
+                newDonut = new Donut(2, nameOfDonut, x+"");
+            }
+            System.out.println(x);
             newDonut.setQuantityOfDonut(x);
-            overallDonutOrderPrice += (x*newDonut.itemPrice());
+            overallDonutOrderPrice += newDonut.itemPrice();
             String s = String.format("%.02f", overallDonutOrderPrice);
             subTotalTextArea.setText(String.valueOf(s));
             donutAddedListView.getItems().add(getSelection + ", " + nameOfDonut + "[" + x + "]");
@@ -218,16 +225,18 @@ public class DonutController implements Initializable {
      * @return object to add later on
      */
     public Donut identityType(String donut){
-        String getSelection = typeOfDonut.getSelectionModel().getSelectedItem().toString();
+        Donut newDonutToAdd = new Donut();
+        String getSelection = donut.substring(0, donut.indexOf(","));
+        String flavor = donut.substring(donut.indexOf(",")+2, donut.indexOf("["));
+        String quantity = donut.substring(donut.indexOf("[")+1, donut.indexOf("]"));
         if(getSelection.equals("Yeast Donut")){
-            donutTypeString ="Yeast Donut";
+            newDonutToAdd = new Donut(0,flavor,quantity);
         }else if (getSelection.equals("Cake Donut")){
-            donutTypeString ="Cake Donut";
+            newDonutToAdd = new Donut(1,flavor,quantity);
         }else if(getSelection.equals("Donut Hole")){
-            donutTypeString = "Donut Hole";
+            newDonutToAdd = new Donut(2,flavor,quantity);
         }
-        Donut donutToAdd = new Donut(getSelection);
-        return donutToAdd;
+        return newDonutToAdd;
     }
 
     /**
@@ -244,7 +253,6 @@ public class DonutController implements Initializable {
            newAlert.showAndWait();
        }else {
            ObservableList<String> listItems = donutAddedListView.getItems();
-           orderOBJ.orderHolderArray.add(newDonut);
            for(int i =0; i<listItems.size();i++){
                observableList.add(listItems.get(i));
                Donut picked = identityType(listItems.get(i));

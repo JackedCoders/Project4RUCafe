@@ -23,6 +23,9 @@ public class Coffee extends MenuItem implements Customizable{
     protected ArrayList<String> addIn = new ArrayList<>();
     private String nameOfSize;
 
+    public String getNameOfSize() {
+        return nameOfSize;
+    }
     /**
      * Constructor of this class that allows for identification of coffee prices and type based on the integer assigned
      * 0 for short, 1 for tall, 2 for grande, 3 for venti
@@ -44,6 +47,14 @@ public class Coffee extends MenuItem implements Customizable{
         }
     }
 
+    /**
+     *
+     * @param c
+     */
+    public Coffee(Coffee c){
+
+
+    }
     /**
      * getter method to return itemPrice from MenuItem.java
      * @return returns the contents of getItemPrice() method in our super class MenuItem

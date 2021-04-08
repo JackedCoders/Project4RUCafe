@@ -198,6 +198,14 @@ public class CoffeeController implements Initializable {
         quantityOfCoffee.setDisable(false);
         addToOrder.setDisable(false);
     }
+
+    /**
+     *
+     * @param order
+     */
+    public void passDataOrderController(Order order){
+        this.order = order;
+    }
     /**
      * Method that performs calculations for our coffee order based on it's size and short being the smallest of them
      * all. Method adds the price to the subtotal text area

@@ -1,8 +1,10 @@
 package RUCafe;
 
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -29,29 +31,45 @@ public class StoreOrdersController {
     private ListView<String> ListOfOrderListView;
     private StoreOrders allOrders = new StoreOrders();
     private Order orderOBJ;
+    public static int num_of_order = 1;
 
-    /**
-     * Assigns the parameter total to the text area totalForSelectedOrderTxtField
-     * @param total
+    public static ObservableList<Integer> appendOrderNUm = FXCollections.observableArrayList();
+
+    /***
+     *
      */
-    public void setTotal(double total){
-        totalForSelectedOrderTxtField.setText(Double.toString(total));
+    public void updateComboBox(){
+        orderNumberCombobox.setItems(appendOrderNUm);
+    }
+    /**
+     *
+     * @param storeOrder
+     */
+    public void setAllOrders(StoreOrders storeOrder){
+        this.allOrders = storeOrder;
     }
 
-
     /**
-     * adds all contents of ListOfOrderList to the observableList present in DonutController. Allows for data transfer
+     *
+     * @param event
      */
-    public void setItems(){
-        ListOfOrderListView.setItems(DonutController.observableList);
-    }
+    @FXML
+    void displaySelectedOrderOnComboBox(ActionEvent event){
+        double total_price =0;
+        totalForSelectedOrderTxtField.setText(0 + "");
+        ListOfOrderListView.getItems().clear();
+        String orderNumString = orderNumberCombobox.getSelectionModel().getSelectedItem().toString();
+        int orderNumInt = Integer.parseInt(orderNumString);
+        Order disp = allOrders.getListAllOrders().get(orderNumInt-1);
 
-    /**
-     * setter method that assigns order object orderObj to order object parameter order for data transfer
-     * @param order
-     */
-    public void setOrderController(Order order){
-        orderOBJ = order;
+        for(MenuItem menuItem: disp.getMenuItems()){
+            ListOfOrderListView.getItems().add(menuItem.toString());
+            menuItem.getItemPrice();
+            total_price = total_price + menuItem.getItemPrice();
+        }
+        total_price += total_price *MainMenuController.SALES_TAX_RATE;
+        totalForSelectedOrderTxtField.setText(String.format("%.02f", total_price));
+
     }
 
     /**
@@ -102,7 +120,5 @@ public class StoreOrdersController {
                 ListOfOrderListView.getItems().remove(orderToCancel);
             }
     }
-
-
 
 }

@@ -10,7 +10,15 @@ import java.util.ArrayList;
  */
 public class Order implements Customizable{
     public static int orderNum;
-    protected ArrayList<MenuItem> orderHolderArray = new ArrayList<>();
+    private ArrayList<MenuItem> orderHolderArray = new ArrayList<>();
+
+    /**
+     *
+     * @param orderHolderArray
+     */
+    public void setOrderHolderArray(ArrayList<MenuItem> orderHolderArray) {
+        this.orderHolderArray = orderHolderArray;
+    }
 
     /**
      * toString method that returns all of the contents of our arrayList above
@@ -25,11 +33,27 @@ public class Order implements Customizable{
     }
 
     /**
-     * Constructor that initializes order num to 1 so we can start off there and increment
+     *
      */
     public Order(){
-        orderNum =1;
-        this.orderHolderArray = new ArrayList<>();
+
+    }
+    /**
+     * Constructor that initializes order num to 1 so we can start off there and increment
+     */
+    public Order(Order order){
+        for(MenuItem item: order.getMenuItems()) {
+
+            if(item instanceof Donut) {
+                Donut d = new Donut((Donut)item);
+                orderHolderArray.add(d);
+            }
+
+            if(item instanceof Coffee) {
+                Coffee c = new Coffee((Coffee)item);
+                orderHolderArray.add(c);
+            }
+        }
     }
 
     /**
@@ -39,9 +63,11 @@ public class Order implements Customizable{
      */
     @Override
     public boolean add(Object obj){
-        MenuItem item = (MenuItem) obj;
-        this.orderHolderArray.add(item);
-        return true;
+        if(obj instanceof MenuItem) {
+            orderHolderArray.add((MenuItem)obj);
+            return true;
+        }
+        return false;
     }
 
     /**
@@ -51,9 +77,15 @@ public class Order implements Customizable{
      */
     @Override
     public boolean remove(Object obj){
-        MenuItem item = (MenuItem) obj;
-        this.orderHolderArray.remove(item);
-        return true;
+        if(obj instanceof String) {
+            for(MenuItem item: orderHolderArray) {
+                if(obj.equals(item.toString())) {
+                    orderHolderArray.remove(item);
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     /**
