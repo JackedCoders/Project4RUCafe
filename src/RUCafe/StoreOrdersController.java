@@ -30,20 +30,33 @@ public class StoreOrdersController {
     private StoreOrders allOrders = new StoreOrders();
     private Order orderOBJ;
 
+    /**
+     * Assigns the parameter total to the text area totalForSelectedOrderTxtField
+     * @param total
+     */
     public void setTotal(double total){
         totalForSelectedOrderTxtField.setText(Double.toString(total));
     }
 
+
+    /**
+     * adds all contents of ListOfOrderList to the observableList present in DonutController. Allows for data transfer
+     */
     public void setItems(){
         ListOfOrderListView.setItems(DonutController.observableList);
     }
 
+    /**
+     * setter method that assigns order object orderObj to order object parameter order for data transfer
+     * @param order
+     */
     public void setOrderController(Order order){
         orderOBJ = order;
     }
 
     /**
-     *
+     * Export all orders present in our Store and save them to a path specified by the user.
+     * Saves a txt file to your computer for easy access later on
      * @param event
      * @throws IOException
      */
@@ -74,7 +87,7 @@ public class StoreOrdersController {
     }
 
     /**
-     *
+     * Removes the selected order from store orders and throws error alerts if empty
      * @param event
      */
     @FXML
