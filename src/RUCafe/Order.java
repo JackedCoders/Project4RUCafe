@@ -8,35 +8,36 @@ import java.util.ArrayList;
  */
 public class Order implements Customizable{
     public static int orderNum;
-    ArrayList<MenuItem> orderList;
+    ArrayList<MenuItem> orderHolderArray;
 
+    public String toString(){
+        String res ="";
+        for(int i = 0; i<this.orderHolderArray.size(); i++){
+            res += this.orderHolderArray.get(i).toString();
+        }
+        return res;
+    }
     public Order(){
         orderNum =1;
-        this.orderList = new ArrayList<>();
+        this.orderHolderArray = new ArrayList<>();
     }
 
     public boolean add(Object obj){
         MenuItem item = (MenuItem) obj;
-        this.orderList.add(item);
+        this.orderHolderArray.add(item);
         return true;
     }
 
     public boolean remove(Object obj){
         MenuItem item = (MenuItem) obj;
-        this.orderList.remove(item);
+        this.orderHolderArray.remove(item);
         return true;
     }
 
     public ArrayList<MenuItem> getMenuItems(){
-        return this.orderList;
+        return this.orderHolderArray;
     }
 
-    public String toString(){
-        String res ="";
-        for(int i =0; i<this.orderList.size(); i++){
-            res += this.orderList.get(i).toString();
-        }
-        return res;
-    }
+
 
 }

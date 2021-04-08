@@ -19,8 +19,8 @@ public class Coffee extends MenuItem implements Customizable{
     public static final int TALL_COFFEE = 1;
     public static final int GRANDE_COFFEE = 2;
     public static final int VENTI_COFFEE = 3;
-    ArrayList<String> addIn = new ArrayList<>();
-    String nameOfSize;
+    protected ArrayList<String> addIn = new ArrayList<>();
+    private String nameOfSize;
 
     /**
      *

@@ -33,14 +33,17 @@ public class CoffeeController implements Initializable {
     @FXML
     private ComboBox<Integer> quantityOfCoffee;
 
-    private final int CoffeeSizeShort =0;
-    private final int CoffeeSizeTall =1; //also quantity 1
-    private final int CoffeeSizeGrande =2; //also quantity 2
-    private final int CoffeeSizeVenti =3; //also quantity 3
-    Coffee newCoffee = new Coffee(0);
-    Order newOrder = new Order();
-    StoreOrders newTotalOrder = new StoreOrders();
+    @FXML
+    private ListView<String> addToCurrentOrderListView;
 
+    private final int COFFEE_SIZE_SHORT =0;
+    private final int COFFEE_SIZE_TALL =1; //also quantity 1
+    private final int COFFEE_SIZE_GRANDE =2; //also quantity 2
+    private final int COFFEE_SIZE_VENTI =3; //also quantity 3
+    private Coffee newCoffee = new Coffee(0);
+    private Order order;
+    private ObservableList<String> coffeeSizeList = FXCollections.observableArrayList("Short" , "Tall" , "Grande", "Venti");
+    private ObservableList<Integer> coffeeQuantityList = FXCollections.observableArrayList(1,2,3);
     /**
      *
      * @param url
@@ -48,8 +51,6 @@ public class CoffeeController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle){
-        ObservableList<String> coffeeSizeList = FXCollections.observableArrayList("Short" , "Tall" , "Grande", "Venti");
-        ObservableList<Integer> coffeeQuantityList = FXCollections.observableArrayList(1,2,3);
         coffeeSize.setItems(coffeeSizeList);
         quantityOfCoffee.setItems(coffeeQuantityList);
         Milk.setDisable(true);
@@ -63,6 +64,9 @@ public class CoffeeController implements Initializable {
         WhippedCream.setDisable(true);
         WhippedCream.setSelected(false);
         resetEverything.setDisable(true);
+        quantityOfCoffee.setDisable(true); //added just now
+        subtotalAreaTextArea.setDisable(true);
+        addToOrder.setDisable(true);
     }
 
     /**s
@@ -191,22 +195,26 @@ public class CoffeeController implements Initializable {
      */
     @FXML
     void sizesCalculation(ActionEvent event){
-//        private final int CoffeeSizeShort =0;
-//        private final int CoffeeSizeTall =1;
-//        private final int CoffeeSizeGrande =2;
-//        private final int CoffeeSizeVenti =3;
         String getSelection = coffeeSize.getSelectionModel().getSelectedItem().toString();
         if(getSelection.equals("Short")){
-            newCoffee = new Coffee(CoffeeSizeShort);
+            newCoffee = new Coffee(COFFEE_SIZE_SHORT);
+            quantityOfCoffee.setDisable(false);
+            addToOrder.setDisable(false);
             helpSetSizesProperties();
         }else if(getSelection.equals("Tall")){
-            newCoffee = new Coffee(CoffeeSizeTall);
+            newCoffee = new Coffee(COFFEE_SIZE_TALL);
+            quantityOfCoffee.setDisable(false);
+            addToOrder.setDisable(false);
             helpSetSizesProperties();
         }else if(getSelection.equals("Grande")){
-            newCoffee = new Coffee(CoffeeSizeGrande);
+            newCoffee = new Coffee(COFFEE_SIZE_GRANDE);
+            quantityOfCoffee.setDisable(false);
+            addToOrder.setDisable(false);
             helpSetSizesProperties();
         }else if(getSelection.equals("Venti")){
-            newCoffee = new Coffee(CoffeeSizeVenti);
+            newCoffee = new Coffee(COFFEE_SIZE_VENTI);
+            quantityOfCoffee.setDisable(false);
+            addToOrder.setDisable(false);
             helpSetSizesProperties();
         }
     }
@@ -235,11 +243,14 @@ public class CoffeeController implements Initializable {
     void quantityCalculation(ActionEvent event){
         String getSelectionQuantity = quantityOfCoffee.getSelectionModel().getSelectedItem().toString();
        if(getSelectionQuantity.equals("1")){
-            helpSetQuantityProperties(CoffeeSizeTall);
+            helpSetQuantityProperties(COFFEE_SIZE_TALL);
+           addToOrder.setDisable(false);
         }else if(getSelectionQuantity.equals("2")){
-           helpSetQuantityProperties(CoffeeSizeGrande);
+           helpSetQuantityProperties(COFFEE_SIZE_GRANDE);
+           addToOrder.setDisable(false);
         }else if(getSelectionQuantity.equals("3")){
-           helpSetQuantityProperties(CoffeeSizeVenti);
+           helpSetQuantityProperties(COFFEE_SIZE_VENTI);
+           addToOrder.setDisable(false);
         }
     }
 
@@ -262,6 +273,9 @@ public class CoffeeController implements Initializable {
         subtotalAreaTextArea.clear();
         coffeeSize.setDisable(false);
         quantityOfCoffee.setDisable(false);
+        addToCurrentOrderListView.getItems().clear();
+        subtotalAreaTextArea.clear();
+        quantityOfCoffee.setItems(coffeeQuantityList);
         String getSelection = coffeeSize.getSelectionModel().getSelectedItem().toString();
         if(getSelection.equals("Short")){
             newCoffee.itemPrice = newCoffee.SHORT_COFFEE_PRICE;
@@ -284,10 +298,69 @@ public class CoffeeController implements Initializable {
 
     /**
      *
+     * @param coffee
+     * @return
+     */
+    public Coffee createCoffeeObject(String coffee){
+        String coffeeSizeString = coffeeSize.getValue().toString();
+        int coffeeSizeInt = 0;
+        if(coffeeSizeString == "Short"){
+            coffeeSizeInt = COFFEE_SIZE_SHORT;
+        }else if(coffeeSizeString == "Tall"){
+            coffeeSizeInt = COFFEE_SIZE_TALL;
+        }else if(coffeeSizeString == "Grande"){
+            coffeeSizeInt = COFFEE_SIZE_GRANDE;
+        }else if(coffeeSizeString == "Venti"){
+            coffeeSizeInt = COFFEE_SIZE_VENTI;
+        }
+        Coffee newCoffeeBasedOnSize = new Coffee(coffeeSizeInt);
+        return newCoffeeBasedOnSize;
+    }
+    /**
+     *
      * @param event
      */
     @FXML
     void addToOrderCoffee(ActionEvent event){
+        if(quantityOfCoffee.getValue() == null){
+            Alert empError = new Alert(Alert.AlertType.ERROR);
+            empError.setTitle("Invalid Quantity! Try again");
+            empError.setContentText("Quantity must be selected before adding to order! ");
+            empError.showAndWait();
+        }else{
+            String quantityToAdd = quantityOfCoffee.getValue().toString();
+            String coffeeSizeToAdd = coffeeSize.getValue().toString();
+            String AddOns = "";
+
+            if(Milk.isSelected() ){
+                AddOns += " Milk ";
+            }
+            if(Caramel.isSelected() ){
+                AddOns += " Caramel ";
+            }
+            if(WhippedCream.isSelected() ){
+                AddOns += " Whipped Cream ";
+            }
+            if(Syrup.isSelected()){
+                AddOns += " Syrup ";
+            }
+            if(Cream.isSelected()){
+                AddOns += " Cream ";
+            }
+            if(!Cream.isSelected() && !Caramel.isSelected() && !WhippedCream.isSelected() && !Syrup.isSelected() && !Milk.isSelected()){
+                AddOns += "None";
+            }
+
+            String s = String.format("%.02f", newCoffee.itemPrice);
+            addToCurrentOrderListView.getItems().add("Size: " + coffeeSizeToAdd + " , Quantity: " + quantityToAdd + " , Price $" + subtotalAreaTextArea.getText() +" , Addons: " + AddOns);
+            ObservableList<String> currentOrderFinallist = addToCurrentOrderListView.getItems();
+            for(int i =0; i<currentOrderFinallist.size(); i++){
+                DonutController.observableList.add(currentOrderFinallist.get(i));
+                Coffee newPicked = createCoffeeObject(currentOrderFinallist.get(i));
+                order.add(newPicked);
+            }
+        }
+
 
     }
 

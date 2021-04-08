@@ -53,6 +53,7 @@ public class DonutController implements Initializable {
         ObservableList<String> typeOfDonutList = FXCollections.observableArrayList("Yeast Donut" , "Cake Donut" , "Donut Hole");
         typeOfDonut.setItems(typeOfDonutList);
         subTotalTextArea.setText("0.00");
+        addToOrder.setDisable(true);
     }
 
     /**
@@ -150,7 +151,7 @@ public class DonutController implements Initializable {
             overallDonutOrderPrice += (x*newDonut.itemPrice());
             String s = String.format("%.02f", overallDonutOrderPrice);
             subTotalTextArea.setText(String.valueOf(s));
-            donutAddedListView.getItems().add( getSelection + ", " + nameOfDonut + "[" + x + "]");
+            donutAddedListView.getItems().add(getSelection + ", " + nameOfDonut + "[" + x + "]");
             addToOrder.setDisable(false);
         }
     }
@@ -160,7 +161,14 @@ public class DonutController implements Initializable {
      */
     @FXML
     void addOneDonutToOrder(ActionEvent event){
-        helpAddingDonutToOrder(CAKE_DONUT);
+        if(donutFlavorListView.getItems().isEmpty()){
+            Alert showErrorNull = new Alert(Alert.AlertType.WARNING);
+            showErrorNull.setContentText("Donut selection & flavor is required before adding");
+            showErrorNull.setTitle("Choose donut first & Try Again");
+            showErrorNull.showAndWait();
+        }else {
+            helpAddingDonutToOrder(CAKE_DONUT);
+        }
     }
 
     /**
@@ -169,7 +177,14 @@ public class DonutController implements Initializable {
      */
     @FXML
     void addOTwoDonutToOrder(ActionEvent event){
-        helpAddingDonutToOrder(DONUT_HOLE);
+        if(donutFlavorListView.getItems().isEmpty()){
+            Alert showErrorNull = new Alert(Alert.AlertType.WARNING);
+            showErrorNull.setContentText("Donut selection & flavor is required before adding");
+            showErrorNull.setTitle("Choose donut first & Try Again");
+            showErrorNull.showAndWait();
+        }else {
+            helpAddingDonutToOrder(DONUT_HOLE);
+        }
     }
 
 
@@ -180,7 +195,14 @@ public class DonutController implements Initializable {
      */
     @FXML
     void addOThreeDonutToOrder(ActionEvent event){
-        helpAddingDonutToOrder(ADD_THREE);
+        if(donutFlavorListView.getItems().isEmpty()){
+            Alert showErrorNull = new Alert(Alert.AlertType.WARNING);
+            showErrorNull.setContentText("Donut selection & flavor is required before adding");
+            showErrorNull.setTitle("Choose donut first & Try Again");
+            showErrorNull.showAndWait();
+        }else {
+            helpAddingDonutToOrder(ADD_THREE);
+        }
     }
 
     /**
@@ -206,13 +228,25 @@ public class DonutController implements Initializable {
      */
     @FXML
     public void addDonutOrder(ActionEvent event){
-      ObservableList<String> listItems = donutAddedListView.getItems();
-      orderOBJ.orderList.add(newDonut);
-      for(int i =0; i<listItems.size();i++){
-          observableList.add(listItems.get(i));
-          Donut picked = identityType(listItems.get(i));
-          orderOBJ.add(picked);
-      }
+       if(donutAddedListView.getItems().isEmpty()){
+           Alert newAlert = new Alert(Alert.AlertType.ERROR);
+           newAlert.setTitle("Invalid order to add!");
+           newAlert.setContentText("You must select the type of donut, the flavor and the quantity to add the donut order");
+           newAlert.showAndWait();
+       }else {
+           ObservableList<String> listItems = donutAddedListView.getItems();
+           orderOBJ.orderHolderArray.add(newDonut);
+           for(int i =0; i<listItems.size();i++){
+               observableList.add(listItems.get(i));
+               Donut picked = identityType(listItems.get(i));
+               orderOBJ.add(picked);
+           }
+           Alert newAlert = new Alert(Alert.AlertType.CONFIRMATION);
+           newAlert.setTitle("Order added to cart!!");
+           newAlert.setContentText("Order has been added. You may close this window to view your order");
+           newAlert.showAndWait();
+       }
+
     }
 
 
