@@ -20,10 +20,11 @@ import java.lang.reflect.AnnotatedArrayType;
 public class Main extends Application {
 
     public static Stage parentStage; //allows to access the object within the controller for other classes
+
     /**
-     *
-     * @param primaryStage
-     * @throws Exception
+     * Sets our parentStage as the main stage, creates a new stage and runs our entire project.
+     * @param primaryStage reference
+     * @throws Exception any errors to catch
      */
     @Override
     public void start(Stage primaryStage) throws Exception{
@@ -42,8 +43,8 @@ public class Main extends Application {
     }
 
     /**
-     *
-     * @param args
+     * Launches the project and passes in arguments
+     * @param args string array of arguments
      */
     public static void main(String[] args) {
         launch(args);

@@ -10,7 +10,7 @@ import java.util.ArrayList;
  */
 public class Order implements Customizable{
     public static int orderNum;
-    private ArrayList<MenuItem> orderHolderArray = new ArrayList<>();
+    protected ArrayList<MenuItem> orderHolderArray = new ArrayList<>();
 
     /**
      * toString method that returns all of the contents of our arrayList above

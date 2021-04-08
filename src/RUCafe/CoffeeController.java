@@ -11,9 +11,13 @@ import javafx.scene.control.TextArea;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.StringTokenizer;
 
 /**
- *
+ * Controller class for CoffeeView.fxml file that implements all of the functionality seen on the front end of our project.
+ * Handles everything from adding, removing, selecting, customizing, initializing our Coffee GUI. Direct handler
+ * and controller of Coffee part of the project along with displaying the correct overall price of the order and a toString method to
+ * allow for export
  * @author Manveer Singh, Prasidh Sriram
  */
 public class CoffeeController implements Initializable {
@@ -44,8 +48,9 @@ public class CoffeeController implements Initializable {
     private Order order;
     final private ObservableList<String> COFFEE_SIZE_LIST = FXCollections.observableArrayList("Short" , "Tall" , "Grande", "Venti");
     final private ObservableList<Integer> COFFEE_QUANTITY_LIST = FXCollections.observableArrayList(1,2,3);
+
     /**
-     *
+     * Method that fully initializes the CoffeeGUI so it's ready to be used, also initialises the flavors
      * @param url
      * @param resourceBundle
      */
@@ -69,8 +74,9 @@ public class CoffeeController implements Initializable {
         addToOrder.setDisable(true);
     }
 
-    /**s
-     *
+    /**
+     *  FXML method that adds the addin "Milk" to the coffee object and performs price calculations
+     *  if deselected, simply remove from the subtotal
      * @param event
      */
     @FXML
@@ -90,7 +96,8 @@ public class CoffeeController implements Initializable {
     }
 
     /**
-     *
+     *  FXML method that adds the addin "Syrup" to the coffee object and performs price calculations
+     *  if deselected, simply remove from the subtotal
      * @param event
      */
     @FXML
@@ -111,7 +118,8 @@ public class CoffeeController implements Initializable {
     }
 
     /**
-     *
+     *  FXML method that adds the addin "Caramel" to the coffee object and performs price calculations
+     *  if deselected, simply remove from the subtotal
      * @param event
      */
     @FXML
@@ -131,7 +139,8 @@ public class CoffeeController implements Initializable {
     }
 
     /**
-     *
+     *  FXML method that adds the addin "Cream" to the coffee object and performs price calculations
+     *  if deselected, simply remove from the subtotal
      * @param event
      */
     @FXML
@@ -151,7 +160,8 @@ public class CoffeeController implements Initializable {
     }
 
     /**
-     *
+     *  FXML method that adds the addin "Whipped Cream" to the coffee object and performs price calculations
+     *  if deselected, simply remove from the subtotal
      * @param event
      */
     @FXML
@@ -172,7 +182,7 @@ public class CoffeeController implements Initializable {
 
 
     /**
-     *
+     * Helper method that avoids duplicate code and sets certain properties (buttons, check boxes, etc) disable when need be
      */
     private void helpSetSizesProperties(){
         Milk.setDisable(false);
@@ -189,7 +199,8 @@ public class CoffeeController implements Initializable {
         addToOrder.setDisable(false);
     }
     /**
-     *
+     * Method that performs calculations for our coffee order based on it's size and short being the smallest of them
+     * all. Method adds the price to the subtotal text area
      * @param event
      */
     @FXML
@@ -223,8 +234,9 @@ public class CoffeeController implements Initializable {
     }
 
     /**
-     *
-     * @param x
+     * Helper method that gets rids of duplicate code and helps in calculating the correct price for
+     * our coffee order
+     * @param x quantity of coffees ordered
      */
     private void helpSetQuantityProperties(int x){
         String s = String.format("%.02f", (x * newCoffee.itemPrice()));
@@ -239,7 +251,7 @@ public class CoffeeController implements Initializable {
         resetEverything.setDisable(false);
     }
     /**
-     *
+     * Method that calculates the correct price for coffee order based on quantity, 1, 2 or 3
      * @param event
      */
     @FXML
@@ -258,7 +270,8 @@ public class CoffeeController implements Initializable {
     }
 
     /**
-     *
+     * Additional feature of the GUI that allows the user to reset every property in the GUI and start a
+     * fresh order
      * @param event
      */
     @FXML
@@ -290,9 +303,9 @@ public class CoffeeController implements Initializable {
     }
 
     /**
-     *
-     * @param coffee
-     * @return
+     *  Creates a new coffee object based on the string passed in, based on size too
+     * @param coffee String to compare
+     * @return a new object to add to our arrayList
      */
     public Coffee createCoffeeObject(String coffee){
         String coffeeSizeString = coffeeSize.getValue().toString();
@@ -309,8 +322,10 @@ public class CoffeeController implements Initializable {
         Coffee newCoffeeBasedOnSize = new Coffee(coffeeSizeInt);
         return newCoffeeBasedOnSize;
     }
+
     /**
-     *
+     * FXML button method that adds selected coffee addins, size and flavor to current order GUI and
+     * handles several different scenarios to ensure the program does not fail
      * @param event
      */
     @FXML

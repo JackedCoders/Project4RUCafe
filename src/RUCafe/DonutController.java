@@ -38,12 +38,12 @@ public class DonutController implements Initializable {
     private final int CAKE_DONUT = 1; //also ADD_ONE
     private final int DONUT_HOLE = 2; //also ADD_TWO
     private final int ADD_THREE = 3;
-    Donut newDonut = new Donut(YEAST_DONUT);
+    private Donut newDonut = new Donut(YEAST_DONUT);
     private String donutTypeString;
     
 
     /**
-     * This method populates the comboboxes with the type of donuts and the amount a user wants in that order to be added to the cart
+     * This method populates the combo boxes with the type of donuts and the amount a user wants in that order to be added to the cart
      * using observableLists of type string. automatically populates upon running the GUI
      * @param url
      * @param resourceBundle
@@ -57,8 +57,8 @@ public class DonutController implements Initializable {
     }
 
     /**
-     *
-     * @param order
+     * Reference allocation to be able to transfer data between controllers and GUIs
+     * @param order object passed
      */
     public void setOrderController(Order order){
         orderOBJ = order;
@@ -134,7 +134,8 @@ public class DonutController implements Initializable {
     }
 
     /**
-     *
+     * Helper method that avoids duplicate code and assigns correct prices, creates new donut objects and
+     * updates subtotal everytime there is a new order
      * @param x number of donuts to add (either 1, 2 or 3)
      */
     private void helpAddingDonutToOrder(int x){
@@ -155,33 +156,40 @@ public class DonutController implements Initializable {
             addToOrder.setDisable(false);
         }
     }
+
     /**
-     *
+     * Helper method that throws an error alert of type WARNING in certain situations used throughout this class
+     */
+    private void helpThrowErorrNull(){
+        Alert showErrorNull = new Alert(Alert.AlertType.WARNING);
+        showErrorNull.setContentText("Donut selection & flavor is required before adding");
+        showErrorNull.setTitle("Choose donut first & Try Again");
+        showErrorNull.showAndWait();
+    }
+
+    /**
+     * FXML method to add ONE donut to the selected list view of orders.
+     * If selected, add. If listview is empty, throw error
      * @param event
      */
     @FXML
     void addOneDonutToOrder(ActionEvent event){
         if(donutFlavorListView.getItems().isEmpty()){
-            Alert showErrorNull = new Alert(Alert.AlertType.WARNING);
-            showErrorNull.setContentText("Donut selection & flavor is required before adding");
-            showErrorNull.setTitle("Choose donut first & Try Again");
-            showErrorNull.showAndWait();
+            helpThrowErorrNull();
         }else {
             helpAddingDonutToOrder(CAKE_DONUT);
         }
     }
 
     /**
-     *
+     * FXML method to add TWO donuts to the selected list view of orders.
+     * If selected, add. If listview is empty, throw error
      * @param event
      */
     @FXML
     void addOTwoDonutToOrder(ActionEvent event){
         if(donutFlavorListView.getItems().isEmpty()){
-            Alert showErrorNull = new Alert(Alert.AlertType.WARNING);
-            showErrorNull.setContentText("Donut selection & flavor is required before adding");
-            showErrorNull.setTitle("Choose donut first & Try Again");
-            showErrorNull.showAndWait();
+            helpThrowErorrNull();
         }else {
             helpAddingDonutToOrder(DONUT_HOLE);
         }
@@ -190,25 +198,24 @@ public class DonutController implements Initializable {
 
 
     /**
-     *
+     * FXML method to add THREE donuts to the selected list view of orders.
+     * If selected, add. If listview is empty, throw error
      * @param event
      */
     @FXML
     void addOThreeDonutToOrder(ActionEvent event){
         if(donutFlavorListView.getItems().isEmpty()){
-            Alert showErrorNull = new Alert(Alert.AlertType.WARNING);
-            showErrorNull.setContentText("Donut selection & flavor is required before adding");
-            showErrorNull.setTitle("Choose donut first & Try Again");
-            showErrorNull.showAndWait();
+            helpThrowErorrNull();
         }else {
             helpAddingDonutToOrder(ADD_THREE);
         }
     }
 
     /**
-     *
-     * @param donut
-     * @return
+     *Identify the type of donut we're dealing with and then based on that create a new donut object
+     * that gets added
+     * @param donut string name of donut
+     * @return object to add later on
      */
     public Donut identityType(String donut){
         String getSelection = typeOfDonut.getSelectionModel().getSelectedItem().toString();
@@ -222,8 +229,10 @@ public class DonutController implements Initializable {
         Donut donutToAdd = new Donut(getSelection);
         return donutToAdd;
     }
+
     /**
-     *
+     * FXML button method that adds the entire donut order to the current order GUI and also takes care of certain cases
+     * and shows Alert messages when need be
      * @param event
      */
     @FXML
